@@ -11,6 +11,7 @@ public class Jump : MonoBehaviour
 
     public bool isGrounded;
     public bool doubleJump;
+    public bool downPressed;
 
     public int gravity = 1;
 
@@ -24,9 +25,10 @@ public class Jump : MonoBehaviour
     void Update()
     {
         //var vertical = Input.GetAxis("Vertical") * downSpeed * Time.deltaTime;
-        if(Input.GetKeyDown("s") && !isGrounded)
+        if(Input.GetKeyDown("s") && !isGrounded && !downPressed)
         {
             rigidbody.AddForce(Vector3.down * downSpeed * gravity, ForceMode2D.Impulse);
+            downPressed = true;
         }
         // if(Input.GetKeyDown("s"))
         // {
@@ -52,6 +54,7 @@ public class Jump : MonoBehaviour
         {
             isGrounded = true;
             doubleJump = false;
+            downPressed = false;
         }
         if(other.gameObject.tag == "WJB")
         {

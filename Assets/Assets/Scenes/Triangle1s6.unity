@@ -237,6 +237,71 @@ MonoBehaviour:
   LinkedDoor: {fileID: 2147538383317393707}
   target: {x: -13.28607, y: 8.301508, z: 7}
   a: 0
+  pmopen: 0
+  LockUI: {fileID: 349037575}
+  LockIcon: {fileID: 1724292123}
+  GameLockIcon: {fileID: 49646415}
+  PM: {fileID: 777895844}
+  one: {fileID: 1745877389}
+  two: {fileID: 1193992938}
+  three: {fileID: 1414829703}
+  four: {fileID: 554502550}
+  eins: 1
+  zwei: 2
+  drei: 3
+  vier: 4
+  uno: 0
+  dos: 0
+  tres: 0
+  cuatro: 0
+  un: 0
+  deux: 0
+  trois: 0
+  catre: 0
+  ichi:
+  - {fileID: 21300000, guid: 4112d157fa3d2354a8214f9efa084cde, type: 3}
+  - {fileID: 21300000, guid: 9a968164679f8944ea190593a98a1dba, type: 3}
+  - {fileID: 21300000, guid: 43e59a74fe0053941ba3d6c869910e9b, type: 3}
+  - {fileID: 21300000, guid: ad3365a1b3e497e4ab33b414f320b72d, type: 3}
+  - {fileID: 21300000, guid: 309a0c264e1b49c47a25b8ee5691b62e, type: 3}
+  - {fileID: 21300000, guid: c8c144b30155ac04d95ccb543d9efc4b, type: 3}
+  - {fileID: 21300000, guid: 862052bd6be5bf94c963f6f8fdaa7812, type: 3}
+  - {fileID: 21300000, guid: cb8275de5dc5a0b4f8a782118bd04bd8, type: 3}
+  - {fileID: 21300000, guid: 8d822fdee93c44345bb1fb078f8e61a3, type: 3}
+  - {fileID: 21300000, guid: 23c4c30f22f5bda4185a2acd1caaf9eb, type: 3}
+  ni:
+  - {fileID: 21300000, guid: 4112d157fa3d2354a8214f9efa084cde, type: 3}
+  - {fileID: 21300000, guid: 9a968164679f8944ea190593a98a1dba, type: 3}
+  - {fileID: 21300000, guid: 43e59a74fe0053941ba3d6c869910e9b, type: 3}
+  - {fileID: 21300000, guid: ad3365a1b3e497e4ab33b414f320b72d, type: 3}
+  - {fileID: 21300000, guid: 309a0c264e1b49c47a25b8ee5691b62e, type: 3}
+  - {fileID: 21300000, guid: c8c144b30155ac04d95ccb543d9efc4b, type: 3}
+  - {fileID: 21300000, guid: 862052bd6be5bf94c963f6f8fdaa7812, type: 3}
+  - {fileID: 21300000, guid: cb8275de5dc5a0b4f8a782118bd04bd8, type: 3}
+  - {fileID: 21300000, guid: 8d822fdee93c44345bb1fb078f8e61a3, type: 3}
+  - {fileID: 21300000, guid: 23c4c30f22f5bda4185a2acd1caaf9eb, type: 3}
+  san:
+  - {fileID: 21300000, guid: 4112d157fa3d2354a8214f9efa084cde, type: 3}
+  - {fileID: 21300000, guid: 9a968164679f8944ea190593a98a1dba, type: 3}
+  - {fileID: 21300000, guid: 43e59a74fe0053941ba3d6c869910e9b, type: 3}
+  - {fileID: 21300000, guid: ad3365a1b3e497e4ab33b414f320b72d, type: 3}
+  - {fileID: 21300000, guid: 309a0c264e1b49c47a25b8ee5691b62e, type: 3}
+  - {fileID: 21300000, guid: c8c144b30155ac04d95ccb543d9efc4b, type: 3}
+  - {fileID: 21300000, guid: 862052bd6be5bf94c963f6f8fdaa7812, type: 3}
+  - {fileID: 21300000, guid: cb8275de5dc5a0b4f8a782118bd04bd8, type: 3}
+  - {fileID: 21300000, guid: 8d822fdee93c44345bb1fb078f8e61a3, type: 3}
+  - {fileID: 21300000, guid: 23c4c30f22f5bda4185a2acd1caaf9eb, type: 3}
+  shi:
+  - {fileID: 21300000, guid: 4112d157fa3d2354a8214f9efa084cde, type: 3}
+  - {fileID: 21300000, guid: 9a968164679f8944ea190593a98a1dba, type: 3}
+  - {fileID: 21300000, guid: 43e59a74fe0053941ba3d6c869910e9b, type: 3}
+  - {fileID: 21300000, guid: ad3365a1b3e497e4ab33b414f320b72d, type: 3}
+  - {fileID: 21300000, guid: 309a0c264e1b49c47a25b8ee5691b62e, type: 3}
+  - {fileID: 21300000, guid: c8c144b30155ac04d95ccb543d9efc4b, type: 3}
+  - {fileID: 21300000, guid: 862052bd6be5bf94c963f6f8fdaa7812, type: 3}
+  - {fileID: 21300000, guid: cb8275de5dc5a0b4f8a782118bd04bd8, type: 3}
+  - {fileID: 21300000, guid: 8d822fdee93c44345bb1fb078f8e61a3, type: 3}
+  - {fileID: 21300000, guid: 23c4c30f22f5bda4185a2acd1caaf9eb, type: 3}
 --- !u!60 &49646418
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -718,7 +783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &349037576
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1298,7 +1363,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 554502552}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49646417}
+        m_TargetAssemblyTypeName: Lock, Assembly-CSharp
+        m_MethodName: FourClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &599175555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6286781417571467742, guid: 58fb5c8505ffce94fb2169a1fe1b4d8f, type: 3}
@@ -1609,6 +1686,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8260488064528549860, guid: cc0d4f939ddb311459e8cabbc9f9489e, type: 3}
   m_PrefabInstance: {fileID: 764072860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &777895844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2723399233735429899, guid: b283ca9b5903f544f80b6b549add912c, type: 3}
+  m_PrefabInstance: {fileID: 1586692483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901252032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.010387421, y: -0.7901027, z: -11}
+  m_LocalPosition: {x: -0.010390282, y: -0.79008555, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1987,7 +2069,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1193992940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49646417}
+        m_TargetAssemblyTypeName: Lock, Assembly-CSharp
+        m_MethodName: TwoClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1290632300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2603,7 +2697,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1414829705}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49646417}
+        m_TargetAssemblyTypeName: Lock, Assembly-CSharp
+        m_MethodName: ThreeClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1451810750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1786252725070823854, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
@@ -3117,7 +3223,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1745877392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49646417}
+        m_TargetAssemblyTypeName: Lock, Assembly-CSharp
+        m_MethodName: OneClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1745877392
 MonoBehaviour:
   m_ObjectHideFlags: 0
