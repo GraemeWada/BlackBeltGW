@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1786252725070823855}
   - component: {fileID: 1786252725070823888}
   - component: {fileID: 8189806388191135627}
+  - component: {fileID: 9017862587617974530}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -151,9 +152,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1786252725070823850}
   jumpForce: 8
-  downSpeed: 0
+  downSpeed: 12
   isGrounded: 0
   doubleJump: 0
+  downPressed: 0
+  gravity: 1
 --- !u!114 &8189806388191135627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,5 +175,13 @@ MonoBehaviour:
   cc: {fileID: 7854619245458654855, guid: cd875a3b6d1ffa74ba5a49bbd0559099, type: 3}
   coinText: {fileID: 0}
   coins: 0
-  currentScene: Triangle1s3
+  currentScene: Triangle1s5
   player: {fileID: 1786252725070823849}
+--- !u!81 &9017862587617974530
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786252725070823849}
+  m_Enabled: 1
