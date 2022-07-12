@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D rb;
 
     public float jumpForce;
     public float downSpeed = 12;
@@ -27,7 +27,7 @@ public class Jump : MonoBehaviour
         //var vertical = Input.GetAxis("Vertical") * downSpeed * Time.deltaTime;
         if(Input.GetKeyDown("s") && !isGrounded && !downPressed)
         {
-            rigidbody.AddForce(Vector3.down * downSpeed * gravity, ForceMode2D.Impulse);
+            rb.AddForce(Vector3.down * downSpeed * gravity, ForceMode2D.Impulse);
             downPressed = true;
         }
         // if(Input.GetKeyDown("s"))
@@ -35,16 +35,16 @@ public class Jump : MonoBehaviour
         //     rigidbody.AddForce(Vector3.down * downSpeed * vertical, ForceMode2D.Impulse);
         // }
         if(Input.GetButtonDown("Jump") && isGrounded){
-            rigidbody.AddForce(Vector3.up * jumpForce * gravity, ForceMode2D.Impulse);
+            rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode2D.Impulse);
         }
         if(Input.GetButtonDown("Jump") && doubleJump && !isGrounded){
-            rigidbody.AddForce(Vector3.up * jumpForce * gravity, ForceMode2D.Impulse);
+            rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode2D.Impulse);
             doubleJump = false;
         }
 
-        if(rigidbody.velocity.y < 0)
+        if(rb.velocity.y < 0)
         {
-            rigidbody.velocity += Physics2D.gravity * fallMultiplier * Time.deltaTime;
+            rb.velocity += Physics2D.gravity * fallMultiplier * Time.deltaTime;
         }
     }
 
