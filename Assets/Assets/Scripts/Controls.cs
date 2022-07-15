@@ -6,9 +6,7 @@ public class Controls : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed = 15f;
-    public float a;
-    public bool g;
-    public bool m;
+    public float speedcap = 25f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,51 +16,21 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        var x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        
-        if(x != 0 && g)
-        {
-            m = true;
-        }
-        else if (x == 0 && g)
-        {
-            m = false;
-        }
-        
-        if(Input.GetKeyUp("a") || Input.GetKeyUp("d"))
-        {
-            if (m && !g)
-            {
-                while (x != 0)
-                {
-                    transform.Translate(x, 0, 0);
-                    if (x < 0)
-                    {
-                        x += a;
-                    }
-                    else
-                    {
-                        x -= a;
-                    }
-                }
-                m = false;
-            }
-        }
-        else
-        {
-            transform.Translate(x, 0, 0);
-        }
-    }
+        //float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Floor")
+        if( Input.GetAxis("Horizontal") < 0 )
         {
-            g = true;
+            Vector3 v = Vector3.left * speed;
+            rb.AddForce(v, ForceMode2D.Force);
+            Debug.Log(v);
         }
-    }
-    void OnCollisionExit2D()
-    {
-        if (g) { g = false; }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            Vector3 v = Vector3.right * speed;
+            rb.AddForce(v, ForceMode2D.Force);
+            Debug.Log(v);
+        }
+
+        //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
     }
 }

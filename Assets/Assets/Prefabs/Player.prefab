@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1786252725070823850}
   speed: 10
+  speedcap: 25
 --- !u!114 &1786252725070823888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c801b817bc1a2a34c8bad43e5a8ecc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 1786252725070823850}
+  rb: {fileID: 1786252725070823850}
   jumpForce: 8
   downSpeed: 12
   isGrounded: 0

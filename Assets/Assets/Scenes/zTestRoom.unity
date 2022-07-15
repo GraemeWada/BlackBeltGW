@@ -3033,7 +3033,7 @@ GameObject:
   - component: {fileID: 1748665692}
   m_Layer: 0
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3045,13 +3045,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748665690}
-  m_LocalRotation: {x: 0, y: 0, z: -0.5, w: 0.8660254}
-  m_LocalPosition: {x: 74.2, y: -32.8, z: 0}
-  m_LocalScale: {x: 74.824, y: 51.1394, z: 2.569456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 384.5679, y: -12.6205, z: 0}
+  m_LocalScale: {x: 654.75775, y: 3.5796397, z: 2.569456}
   m_Children: []
   m_Father: {fileID: 1898035465}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1748665692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3992,6 +3992,10 @@ PrefabInstance:
     - target: {fileID: 1786252725070823855, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
       propertyPath: a
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1786252725070823855, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1786252725070823888, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
       propertyPath: rb
