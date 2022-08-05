@@ -3989,45 +3989,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1786252725070823855, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-      propertyPath: a
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1786252725070823855, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-      propertyPath: speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1786252725070823855, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-      propertyPath: speedcap
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1786252725070823888, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 1786252725833653777}
-    - target: {fileID: 1786252725070823888, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-      propertyPath: downSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8189806388191135627, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-      propertyPath: cc
-      value: 
-      objectReference: {fileID: 7854619245458654855, guid: cd875a3b6d1ffa74ba5a49bbd0559099, type: 3}
     - target: {fileID: 8189806388191135627, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
       propertyPath: coinText
       value: 
       objectReference: {fileID: 1713907229}
-    - target: {fileID: 8189806388191135627, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-      propertyPath: currentScene
-      value: Triangle1s5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
---- !u!50 &1786252725833653777 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 1786252725070823850, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
-  m_PrefabInstance: {fileID: 1786252725833653776}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2147538383317393706
 PrefabInstance:
   m_ObjectHideFlags: 0

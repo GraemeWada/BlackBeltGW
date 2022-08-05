@@ -7,6 +7,8 @@ public class Controls : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 15f;
     public float speedcap = 25f;
+    public Jump jump;
+    public bool isKeyPressed;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +22,13 @@ public class Controls : MonoBehaviour
 
         if( Input.GetAxis("Horizontal") < 0 && rb.velocity.x > (speedcap * -1))
         {
-            Vector3 v = new Vector3(-1 * speed, 0, 0);
+            Vector3 v = new Vector3(-1 * speed * -Input.GetAxis("Horizontal"), 0, 0);
             rb.AddForce(v, ForceMode2D.Impulse);
             Debug.Log(rb.velocity);
         }
         if (Input.GetAxis("Horizontal") > 0 && rb.velocity.x < speedcap)
         {
-            Vector3 v = Vector3.right * speed;
+            Vector3 v = Vector3.right * (float)(speed/1.5) * Input.GetAxis("Horizontal");
             rb.AddForce(v, ForceMode2D.Impulse);
             Debug.Log(rb.velocity);
         }
