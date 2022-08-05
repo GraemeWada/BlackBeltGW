@@ -18,17 +18,17 @@ public class Controls : MonoBehaviour
     {
         //float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
-        if( Input.GetAxis("Horizontal") < 0 )
+        if( Input.GetAxis("Horizontal") < 0 && rb.velocity.x > (speedcap * -1))
         {
-            Vector3 v = Vector3.left * speed;
-            rb.AddForce(v, ForceMode2D.Force);
-            Debug.Log(v);
+            Vector3 v = new Vector3(-1 * speed, 0, 0);
+            rb.AddForce(v, ForceMode2D.Impulse);
+            Debug.Log(rb.velocity);
         }
-        if (Input.GetAxis("Horizontal") > 0)
+        if (Input.GetAxis("Horizontal") > 0 && rb.velocity.x < speedcap)
         {
             Vector3 v = Vector3.right * speed;
-            rb.AddForce(v, ForceMode2D.Force);
-            Debug.Log(v);
+            rb.AddForce(v, ForceMode2D.Impulse);
+            Debug.Log(rb.velocity);
         }
 
         //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
