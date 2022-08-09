@@ -8,10 +8,12 @@ public class Jump : MonoBehaviour
 
     public float jumpForce;
     public float downSpeed = 12;
+    public float m;
 
     public bool isGrounded;
     public bool doubleJump;
     public bool downPressed;
+    public bool swj;
 
     public int gravity = 1;
 
@@ -20,6 +22,7 @@ public class Jump : MonoBehaviour
     void Start()
     {
         downSpeed = 12;
+        swj = false;
     }
 
     void Update()
@@ -41,6 +44,11 @@ public class Jump : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode2D.Impulse);
             doubleJump = false;
         }
+        if(Input.GetButtonDown("Jump") && swj)
+        {
+            rb.AddForce(Vector3.up * jumpForce * m * gravity, ForceMode2D.Impulse);
+            swj = false;
+        }
 
         if(rb.velocity.y < 0)
         {
@@ -55,10 +63,13 @@ public class Jump : MonoBehaviour
             isGrounded = true;
             doubleJump = false;
             downPressed = false;
+            swj = false;
         }
         if(other.gameObject.tag == "WJB")
         {
-            doubleJump = true;
+            swj = true;
+            doubleJump = false;
+            isGrounded = false;
         }
     }
 
@@ -68,6 +79,10 @@ public class Jump : MonoBehaviour
         {
             isGrounded = false;
             doubleJump = true;
+        }
+        if (swj)
+        {
+            swj = false;
         }
     }
 }

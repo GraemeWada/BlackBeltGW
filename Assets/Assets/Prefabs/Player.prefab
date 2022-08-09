@@ -139,6 +139,9 @@ MonoBehaviour:
   rb: {fileID: 1786252725070823850}
   speed: 0.5
   speedcap: 12
+  stuck: 0.05
+  jump: {fileID: 0}
+  isKeyPressed: 0
 --- !u!114 &1786252725070823888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,9 +157,11 @@ MonoBehaviour:
   rb: {fileID: 1786252725070823850}
   jumpForce: 8
   downSpeed: 12
+  m: 1.75
   isGrounded: 0
   doubleJump: 0
   downPressed: 0
+  swj: 0
   gravity: 1
 --- !u!114 &8189806388191135627
 MonoBehaviour:

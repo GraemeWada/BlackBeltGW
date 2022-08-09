@@ -7,6 +7,7 @@ public class Controls : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 15f;
     public float speedcap = 25f;
+    public float stuck;
     public Jump jump;
     public bool isKeyPressed;
     // Start is called before the first frame update
@@ -34,5 +35,14 @@ public class Controls : MonoBehaviour
         }
 
         //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
+    }
+
+    void OnCollisionEnter2D(Collision2D c)
+    {
+        if(c.gameObject.tag == "PushZone")
+        {
+rb.AddForce(Vector3.up * stuck, ForceMode2D.Impulse);
+        }
+        
     }
 }

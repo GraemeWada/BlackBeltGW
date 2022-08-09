@@ -9,6 +9,8 @@ TagManager:
   - Hazard
   - Coin
   - WJB
+  - PushZone
+  - GS
   layers:
   - Default
   - TransparentFX
