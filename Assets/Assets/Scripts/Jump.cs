@@ -16,21 +16,37 @@ public class Jump : MonoBehaviour
     public bool swj;
 
     public int gravity = 1;
+    public Vector2 v;
+    public GravitySwitch g;
 
     float fallMultiplier = 1.5f;
 
     void Start()
     {
-        downSpeed = 12;
         swj = false;
+        if(g != null)
+        {
+            v = g.v[g.GCCounter] * -1;
+        }
+        else
+        {
+            v = new Vector2(0, 9.81f);
+        }
     }
 
     void Update()
     {
-        //var vertical = Input.GetAxis("Vertical") * downSpeed * Time.deltaTime;
-        if(Input.GetKeyDown("s") && !isGrounded && !downPressed)
+        if (g != null)
         {
-            rb.AddForce(Vector3.down * downSpeed * gravity, ForceMode2D.Impulse);
+            if (!v.Equals(g.v))
+            {
+                v = g.v[g.GCCounter] * -1;
+            }
+        }
+        //var vertical = Input.GetAxis("Vertical") * downSpeed * Time.deltaTime;
+        if (Input.GetKeyDown("s") && !isGrounded && !downPressed)
+        {
+            rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
             downPressed = true;
         }
         // if(Input.GetKeyDown("s"))
@@ -38,15 +54,15 @@ public class Jump : MonoBehaviour
         //     rigidbody.AddForce(Vector3.down * downSpeed * vertical, ForceMode2D.Impulse);
         // }
         if(Input.GetButtonDown("Jump") && isGrounded){
-            rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode2D.Impulse);
+            rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
         }
         if(Input.GetButtonDown("Jump") && doubleJump && !isGrounded){
-            rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode2D.Impulse);
+            rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
             doubleJump = false;
         }
         if(Input.GetButtonDown("Jump") && swj)
         {
-            rb.AddForce(Vector3.up * jumpForce * m * gravity, ForceMode2D.Impulse);
+            rb.AddForce(v * jumpForce * m, ForceMode2D.Impulse);
             swj = false;
         }
 

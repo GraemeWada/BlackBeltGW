@@ -155,14 +155,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1786252725070823850}
-  jumpForce: 8
-  downSpeed: 12
+  jumpForce: 0.8
+  downSpeed: 1.5
   m: 1.75
   isGrounded: 0
   doubleJump: 0
   downPressed: 0
   swj: 0
   gravity: 1
+  v: {x: 0, y: 0}
+  g: {fileID: 0}
 --- !u!114 &8189806388191135627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +183,7 @@ MonoBehaviour:
   cc: {fileID: 7854619245458654855, guid: cd875a3b6d1ffa74ba5a49bbd0559099, type: 3}
   coinText: {fileID: 0}
   coins: 0
-  currentScene: Triangle1s5
+  currentScene: Triangle1s7
   player: {fileID: 1786252725070823849}
 --- !u!81 &9017862587617974530
 AudioListener:
