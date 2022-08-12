@@ -10,10 +10,31 @@ public class Controls : MonoBehaviour
     public float stuck;
     public Jump jump;
     public bool isKeyPressed;
+
+    public Vector2 LeftV;
+    public Vector2 RightV;
+
+    public GravitySwitch g;
+    public int temp;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Physics2D.gravity = new Vector2(0, -9.81f);
+        if (g == null) 
+        {
+            RightV.x = Mathf.Cos(g.dir[g.GCCounter]);
+            RightV.y = Mathf.Sin(g.dir[g.GCCounter]);
+            LeftV.x = Mathf.Cos(g.dir[g.GCCounter]+180);
+            LeftV.y = Mathf.Sin(g.dir[g.GCCounter]+180);
+            temp = g.GCCounter;
+        }
+        else
+        {
+            RightV.x = Mathf.Cos(0);
+            RightV.y = Mathf.Sin(0);
+            LeftV.x = Mathf.Cos(180);
+            LeftV.y = Mathf.Sin(180);
+        }
     }
 
     // Update is called once per frame
@@ -23,18 +44,30 @@ public class Controls : MonoBehaviour
 
         if( Input.GetAxis("Horizontal") < 0 && rb.velocity.x > (speedcap * -1))
         {
-            Vector3 v = new Vector3(-1 * speed * -Input.GetAxis("Horizontal"), 0, 0);
-            rb.AddForce(v, ForceMode2D.Impulse);
+            //Vector3 v = new Vector3(-1 * speed * -Input.GetAxis("Horizontal"), 0, 0);
+            rb.AddForce(LeftV * speed * 1.5f, ForceMode2D.Impulse);
             Debug.Log(rb.velocity);
         }
         if (Input.GetAxis("Horizontal") > 0 && rb.velocity.x < speedcap)
         {
-            Vector3 v = Vector3.right * (float)(speed/1.5) * Input.GetAxis("Horizontal");
-            rb.AddForce(v, ForceMode2D.Impulse);
+            //Vector3 v = Vector3.right * (float)(speed/1.5) * Input.GetAxis("Horizontal");
+            rb.AddForce(RightV * speed, ForceMode2D.Impulse);
             Debug.Log(rb.velocity);
         }
 
         //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
+    }
+
+    void Update()
+    {
+        if(g != null || g.GCCounter != temp)
+        {
+            RightV.x = Mathf.Cos(g.dir[g.GCCounter]);
+            RightV.y = Mathf.Sin(g.dir[g.GCCounter]);
+            LeftV.x = Mathf.Cos(g.dir[g.GCCounter] + 180);
+            LeftV.y = Mathf.Sin(g.dir[g.GCCounter] + 180);
+            temp = g.GCCounter;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D c)

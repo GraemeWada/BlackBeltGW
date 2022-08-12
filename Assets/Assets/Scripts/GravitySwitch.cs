@@ -7,6 +7,7 @@ public class GravitySwitch : MonoBehaviour
     public int maxGChanges;
     public int GCCounter;
     public Vector2[] v;
+    public int[] dir;
     public bool test;
     public int temp;
     public GameObject[] box;
