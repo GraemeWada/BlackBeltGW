@@ -47,18 +47,18 @@ public class Controls : MonoBehaviour
         v = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(rb.velocity.x), 2)+Mathf.Pow(Mathf.Abs(rb.velocity.y), 2));
         //float h = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
-        if( Input.GetAxis("Horizontal") < 0 && v > (speedcap * -1))
+        if( Input.GetAxis("Horizontal") < 0 && v < speedcap)
         {
             //Vector3 v = new Vector3(-1 * speed * -Input.GetAxis("Horizontal"), 0, 0);
             rb.AddForce(LeftV * speed * 1.5f, ForceMode2D.Impulse);
-            //Debug.Log(rb.velocity);
+            Debug.Log(v);
             //Left
         }
         if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
         {
             //Vector3 v = Vector3.right * (float)(speed/1.5) * Input.GetAxis("Horizontal");
             rb.AddForce(RightV * speed, ForceMode2D.Impulse);
-            //Debug.Log(rb.velocity);
+            Debug.Log(v);
             //Right
         }
 
