@@ -8,7 +8,6 @@ public class Controls : MonoBehaviour
     public float speed = 15f;
     public float speedcap = 25f;
     public float stuck;
-    public Jump jump;
     public bool isKeyPressed;
 
     public Vector2 LeftV;
@@ -17,6 +16,7 @@ public class Controls : MonoBehaviour
 
     public GravitySwitch g;
     public int temp;
+    //1 left, 0 stationary, -1 right
 
     // Start is called before the first frame update
     void Start()
@@ -45,18 +45,16 @@ public class Controls : MonoBehaviour
     {
 
         v = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(rb.velocity.x), 2)+Mathf.Pow(Mathf.Abs(rb.velocity.y), 2));
-        //float h = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        //float h = Input.GetAxis("Horizontal");
 
-        if( Input.GetAxis("Horizontal") < 0 && v < speedcap)
+        if( Input.GetAxis("Horizontal") < 0 && (v*-1) > (speedcap*-1))
         {
-            //Vector3 v = new Vector3(-1 * speed * -Input.GetAxis("Horizontal"), 0, 0);
             rb.AddForce(LeftV * speed * 1.5f, ForceMode2D.Impulse);
             Debug.Log(v);
             //Left
         }
         if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
         {
-            //Vector3 v = Vector3.right * (float)(speed/1.5) * Input.GetAxis("Horizontal");
             rb.AddForce(RightV * speed, ForceMode2D.Impulse);
             Debug.Log(v);
             //Right
@@ -84,8 +82,7 @@ public class Controls : MonoBehaviour
     {
         if(c.gameObject.tag == "PushZone")
         {
-            rb.AddForce(Vector3.up * stuck, ForceMode2D.Impulse);
+            rb.AddForce(g.v[g.GCCounter] * -1 * stuck, ForceMode2D.Impulse);
         }
-        
     }
 }
