@@ -55,10 +55,15 @@ public class Jump : MonoBehaviour
         // }
         if(Input.GetButtonDown("Jump") && isGrounded){
             rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
+            //Debug.Log(rb.velocity);
+
+            Debug.Log(v);
         }
         if(Input.GetButtonDown("Jump") && doubleJump && !isGrounded){
             rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
             doubleJump = false;
+            //Debug.Log(rb.velocity);
+            Debug.Log(v);
         }
         if(Input.GetButtonDown("Jump") && swj)
         {

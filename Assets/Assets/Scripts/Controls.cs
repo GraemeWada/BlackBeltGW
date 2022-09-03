@@ -49,17 +49,17 @@ public class Controls : MonoBehaviour
 
         if( Input.GetAxis("Horizontal") < 0 && (v*-1) > (speedcap*-1))
         {
-            rb.AddForce(LeftV * speed * 1.5f, ForceMode2D.Impulse);
-            Debug.Log(v);
+            rb.AddForce(LeftV * speed * 1.3f, ForceMode2D.Impulse);
+            //Debug.Log(v);
             //Left
         }
         if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
         {
             rb.AddForce(RightV * speed, ForceMode2D.Impulse);
-            Debug.Log(v);
+            //Debug.Log(v);
             //Right
         }
-
+        //Debug.Log(v);
         //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
     }
 
