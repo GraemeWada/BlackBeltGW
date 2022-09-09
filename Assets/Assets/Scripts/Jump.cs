@@ -21,6 +21,8 @@ public class Jump : MonoBehaviour
 
     float fallMultiplier = 1.5f;
 
+    public RaycastHit2D hit;
+
     void Start()
     {
         swj = false;
@@ -43,37 +45,41 @@ public class Jump : MonoBehaviour
                 v = g.v[g.GCCounter] * -1;
             }
         }
-        //var vertical = Input.GetAxis("Vertical") * downSpeed * Time.deltaTime;
+        
         if (Input.GetKeyDown("s") && !isGrounded && !downPressed)
         {
             rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
             downPressed = true;
         }
-        // if(Input.GetKeyDown("s"))
-        // {
-        //     rigidbody.AddForce(Vector3.down * downSpeed * vertical, ForceMode2D.Impulse);
-        // }
-        if(Input.GetButtonDown("Jump") && isGrounded){
-            rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
-            //Debug.Log(rb.velocity);
 
-            Debug.Log(v);
-        }
-        if(Input.GetButtonDown("Jump") && doubleJump && !isGrounded){
-            rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
-            doubleJump = false;
-            //Debug.Log(rb.velocity);
-            Debug.Log(v);
-        }
-        if(Input.GetButtonDown("Jump") && swj)
-        {
-            rb.AddForce(v * jumpForce * m, ForceMode2D.Impulse);
-            swj = false;
+        if(Input.GetButtonDown("Jump")){
+            if (isGrounded)
+            {
+                rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
+            }
+            if (doubleJump)
+            {
+                rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
+                doubleJump = false;
+            }
+            if (swj)
+            {
+                rb.AddForce(v * jumpForce * m, ForceMode2D.Impulse);
+                swj = false;
+            }
         }
 
         if(rb.velocity.y < 0)
         {
             rb.velocity += Physics2D.gravity * fallMultiplier * Time.deltaTime;
+        }
+
+        hit = Physics2D.Raycast(transform.position, v * -1 * 0.05f);
+        Debug.DrawRay(transform.position, v * -1 * 0.05f, Color.red);
+
+        if(hit.collider.tag == "Floor")
+        {
+            isGrounded = true;
         }
     }
 

@@ -49,13 +49,13 @@ public class Controls : MonoBehaviour
 
         if( Input.GetAxis("Horizontal") < 0 && (v*-1) > (speedcap*-1))
         {
-            rb.AddForce(LeftV * speed * 1.3f, ForceMode2D.Impulse);
+            rb.AddForce(LeftV * speed * 1.3f, ForceMode2D.Force);
             //Debug.Log(v);
             //Left
         }
         if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
         {
-            rb.AddForce(RightV * speed, ForceMode2D.Impulse);
+            rb.AddForce(RightV * speed, ForceMode2D.Force);
             //Debug.Log(v);
             //Right
         }
@@ -82,7 +82,11 @@ public class Controls : MonoBehaviour
     {
         if(c.gameObject.tag == "PushZone")
         {
-            rb.AddForce(g.v[g.GCCounter] * -1 * stuck, ForceMode2D.Impulse);
+
+            if(g != null)
+            {
+                rb.AddForce(g.v[g.GCCounter] * -1 * stuck, ForceMode2D.Impulse);
+            }
         }
     }
 }

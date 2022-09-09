@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Triangle1s7.unity
     guid: c8275d38a353bda4eb9254b8b708ddf4
   - enabled: 1
+    path: Assets/Scenes/Triangle1s8s.unity
+    guid: 9fe6fceeb506eb24c9ad7e31dc22a7b5
+  - enabled: 1
     path: Assets/Scenes/nLevel110.unity
     guid: a33850a1c39adc14ba70778057b32193
   - enabled: 1
