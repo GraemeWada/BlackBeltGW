@@ -41,7 +41,7 @@ public class Controls : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         v = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(rb.velocity.x), 2)+Mathf.Pow(Mathf.Abs(rb.velocity.y), 2));
@@ -49,22 +49,18 @@ public class Controls : MonoBehaviour
 
         if( Input.GetAxis("Horizontal") < 0 && (v*-1) > (speedcap*-1))
         {
-            rb.AddForce(LeftV * speed * 1.3f, ForceMode2D.Force);
+            rb.AddForce(LeftV * speed * 1.3f * Time.deltaTime, ForceMode2D.Impulse);
+            //rb.AddForce(Vector2.left * speed* Time.deltaTime, ForceMode2D.Impulse);
             //Debug.Log(v);
             //Left
         }
         if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
         {
-            rb.AddForce(RightV * speed, ForceMode2D.Force);
+            rb.AddForce(RightV * speed * Time.deltaTime, ForceMode2D.Impulse);
+            //rb.AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Impulse);
             //Debug.Log(v);
             //Right
         }
-        //Debug.Log(v);
-        //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
-    }
-
-    void Update()
-    {
         if(g != null)
         {
             if(g.GCCounter != temp){
@@ -76,6 +72,8 @@ public class Controls : MonoBehaviour
                 temp = g.GCCounter;
             }
         }
+        //Debug.Log(v);
+        //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
     }
 
     void OnCollisionEnter2D(Collision2D c)

@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/nLevel4150.unity
     guid: b0c7b851ff0efb74883a23ac79e33d55
+  - enabled: 1
+    path: Assets/Scenes/zTestRoom.unity
+    guid: 86a969deac0751f4d82c52690e0bf002
   m_configObjects: {}

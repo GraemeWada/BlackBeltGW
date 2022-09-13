@@ -21,8 +21,6 @@ public class Jump : MonoBehaviour
 
     float fallMultiplier = 1.5f;
 
-    public RaycastHit2D hit;
-
     void Start()
     {
         swj = false;
@@ -74,8 +72,13 @@ public class Jump : MonoBehaviour
             rb.velocity += Physics2D.gravity * fallMultiplier * Time.deltaTime;
         }
 
-        hit = Physics2D.Raycast(transform.position, v * -1 * 0.05f);
+        
+    }
+
+    void FixedUpdate(){
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3 (0,0,0), v * -1 * 0.05f);
         Debug.DrawRay(transform.position, v * -1 * 0.05f, Color.red);
+        Debug.Log(hit.collider.name);
 
         if(hit.collider.tag == "Floor")
         {
