@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2265081201018492180}
   - component: {fileID: 8418986775801013182}
   - component: {fileID: 731637622318571311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SemiPlatform
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -153,9 +153,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5887938602278558160}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.850336, y: 5.437332, z: 8}
-  m_LocalScale: {x: 5.203158, y: 1, z: 1}
+  m_LocalScale: {x: 6.4493146, y: 1, z: 1}
   m_Children:
   - {fileID: 727511896866676800}
   m_Father: {fileID: 0}

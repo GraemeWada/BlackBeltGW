@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 7530869560113013770}
   - component: {fileID: 7530869560113013765}
   - component: {fileID: 7530869560113013764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: QuadA (1)
   m_TagString: Floor
   m_Icon: {fileID: 0}

@@ -790,10 +790,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5887938602278558164, guid: 74f679b733e69f241a642534775aa552, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6.4493146
-      objectReference: {fileID: 0}
-    - target: {fileID: 5887938602278558164, guid: 74f679b733e69f241a642534775aa552, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.007
       objectReference: {fileID: 0}
@@ -2460,6 +2456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swidge
       objectReference: {fileID: 0}
+    - target: {fileID: 7864500027138699321, guid: 59d676f4ad04e6e4e8dc58ade320d431, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7864500027138699322, guid: 59d676f4ad04e6e4e8dc58ade320d431, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2661,6 +2661,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1380183705}
     m_Modifications:
+    - target: {fileID: 7327760924927406629, guid: 7787e898e04c53d4686a59ed6f83ff57, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7530869559670160523, guid: 7787e898e04c53d4686a59ed6f83ff57, type: 3}
       propertyPath: m_Name
       value: PlatformExample

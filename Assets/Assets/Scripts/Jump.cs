@@ -8,18 +8,23 @@ public class Jump : MonoBehaviour
 
     public float jumpForce;
     public float downSpeed = 12;
-    public float m;
 
     public bool isGrounded;
     public bool doubleJump;
     public bool downPressed;
     public bool swj;
+    public bool t;
+    public bool d;
 
-    public int gravity = 1;
     public Vector2 v;
     public GravitySwitch g;
 
+    public Controls cl;
+
     float fallMultiplier = 1.5f;
+
+    [Header("Test")]
+    public bool j;
 
     void Start()
     {
@@ -49,11 +54,24 @@ public class Jump : MonoBehaviour
             rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
             downPressed = true;
         }
+        if(isGrounded){
+            d = false;
+            doubleJump = false;
+            swj = false;
+            downPressed = false;
+        }
+        if(!isGrounded && !d){d = true; doubleJump = true;}
+        if(j){
+            j=false;
+                rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
+                t = false;
+        }
 
         if(Input.GetButtonDown("Jump")){
             if (isGrounded)
             {
                 rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
+                t = false;
             }
             if (doubleJump)
             {
@@ -62,27 +80,34 @@ public class Jump : MonoBehaviour
             }
             if (swj)
             {
-                rb.AddForce(v * jumpForce * m, ForceMode2D.Impulse);
+                rb.AddForce(v * jumpForce * 1.75f, ForceMode2D.Impulse);
                 swj = false;
             }
         }
 
-        if(rb.velocity.y < 0)
+        if(cl.v == 0 && !isGrounded)
         {
-            rb.velocity += Physics2D.gravity * fallMultiplier * Time.deltaTime;
+            t = true;
+            if(t && !isGrounded){
+                rb.velocity += Physics2D.gravity * fallMultiplier * Time.deltaTime;
+            }
         }
 
         
     }
 
     void FixedUpdate(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3 (0,0,0), v * -1 * 0.05f);
-        Debug.DrawRay(transform.position, v * -1 * 0.05f, Color.red);
-        Debug.Log(hit.collider.name);
-
-        if(hit.collider.tag == "Floor")
-        {
-            isGrounded = true;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, v * -1, 0.258f, 1 << 6);
+        Debug.DrawRay(transform.position, v * -1, Color.red);
+        //Debug.Log(hit.collider.name);
+        if(hit != false){
+            if(hit.collider.tag == "Floor")
+            {
+                isGrounded = true;
+            }
+        }
+        else{
+            isGrounded = false;
         }
     }
 
@@ -94,9 +119,11 @@ public class Jump : MonoBehaviour
             doubleJump = false;
             downPressed = false;
             swj = false;
+            t = false;
         }
         if(other.gameObject.tag == "WJB")
         {
+            t=false;
             swj = true;
             doubleJump = false;
             isGrounded = false;
@@ -107,6 +134,7 @@ public class Jump : MonoBehaviour
     {
         if(isGrounded)
         {
+            j=false;
             isGrounded = false;
             doubleJump = true;
         }

@@ -166,9 +166,11 @@ MonoBehaviour:
   doubleJump: 0
   downPressed: 0
   swj: 0
+  t: 0
   gravity: 1
   v: {x: 0, y: 0}
   g: {fileID: 0}
+  cl: {fileID: 1786252725070823855}
 --- !u!114 &8189806388191135627
 MonoBehaviour:
   m_ObjectHideFlags: 0
