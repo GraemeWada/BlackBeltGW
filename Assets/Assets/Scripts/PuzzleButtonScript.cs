@@ -10,7 +10,7 @@ public class PuzzleButtonScript : MonoBehaviour
     //public float speed;
     public bool moved = false;
     public Material usedRed;
-    public int level;
+    public string level;
     public Hazard player;
     public int tempcoins;
     public Vector2 lerp2;
@@ -25,7 +25,7 @@ public class PuzzleButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(level == 8){
+        if(level == "8:b1"){
             
             if(tempcoins != player.coins){
                 tempcoins = player.coins;
@@ -38,6 +38,10 @@ public class PuzzleButtonScript : MonoBehaviour
         if(moved)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime);
+        }
+        if(player.coins == 1)
+        {
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, target, Time.deltaTime);
         }
     }
 

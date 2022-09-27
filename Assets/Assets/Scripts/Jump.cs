@@ -48,6 +48,11 @@ public class Jump : MonoBehaviour
                 v = g.v[g.GCCounter] * -1;
             }
         }
+
+        if(Physics2D.gravity * -1 != v)
+        {
+            v = Physics2D.gravity * -1;
+        }
         
         if (Input.GetKeyDown("s") && !isGrounded && !downPressed)
         {
