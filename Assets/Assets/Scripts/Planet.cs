@@ -9,7 +9,7 @@ public class Planet : MonoBehaviour
     public Vector2 centre;
     public float[] distFromCentre = new float[5];
     public int d;
-    public int dir;
+    public float dir;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,12 +46,47 @@ public class Planet : MonoBehaviour
             {
                 Physics2D.gravity = new Vector2(0, distFromCentre[3]);
             }
-            dir = Mathf.Sqrt(Math.Pow(Mathf.Abs(Physics2D.gravity.x), 2) + Math.Pow(Mathf.Abs(Physics2D.gravity.y), 2));
+            dir = getDir(distFromCentre[0], distFromCentre[1]);
+            //dir = Mathf.Atan2(pos.y, pos.x);
         }
     }
     
     void OnTriggerExit2D()
     {
         Physics2D.gravity = regularGravity;
+    }
+
+    public float getDir(float x, float y)
+    {
+        float d = 0;
+        if(y < 0)
+        {
+            if(x < y *-1 && x > y)
+            {
+                d = 180;
+            }
+        }
+        if (y > 0)
+        {
+            if (x < y * -1 && x > y)
+            {
+                d = 0;
+            }
+        }
+        if (x < 0)
+        {
+            if (y < x * -1 && y > x)
+            {
+                d = 270;
+            }
+        }
+        if (x > 0)
+        {
+            if (y < x * -1 && y > x)
+            {
+                d = 90;
+            }
+        }
+        return d;
     }
 }

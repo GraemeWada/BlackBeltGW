@@ -16,12 +16,15 @@ public class Controls : MonoBehaviour
 
     public GravitySwitch g;
     public int temp;
+    public Vector2 t;
+    public Planet p;
     //1 left, 0 stationary, -1 right
 
     // Start is called before the first frame update
     void Start()
     {
         Physics2D.gravity = new Vector2(0, -9.81f);
+        t = Physics2D.gravity;
         if (g != null) 
         {
             int dir = g.dir[g.GCCounter];
@@ -72,6 +75,16 @@ public class Controls : MonoBehaviour
                 temp = g.GCCounter;
             }
         }
+        if(t != Physics2D.gravity && p != null)
+        {
+            float dir = p.dir;
+            RightV.x = Mathf.Cos(Mathf.Deg2Rad * dir);
+            RightV.y = Mathf.Sin(Mathf.Deg2Rad * dir);
+            LeftV.x = Mathf.Cos(Mathf.Deg2Rad * (dir + 180));
+            LeftV.y = Mathf.Sin(Mathf.Deg2Rad * (dir + 180));
+            t = Physics2D.gravity;
+            Debug.Log("a");
+        } 
         //Debug.Log(v);
         //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
     }
@@ -86,5 +99,10 @@ public class Controls : MonoBehaviour
                 rb.AddForce(g.v[g.GCCounter] * -1 * stuck, ForceMode2D.Impulse);
             }
         }
+    }
+
+    public void recalculateControls()
+    {
+
     }
 }
