@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1786252725070823888}
   - component: {fileID: 8189806388191135627}
   - component: {fileID: 9017862587617974530}
+  - component: {fileID: 202526227335426646}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,6 +147,7 @@ MonoBehaviour:
   v: 0
   g: {fileID: 0}
   temp: 0
+  t: {x: 0, y: 0}
 --- !u!114 &1786252725070823888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,16 +163,16 @@ MonoBehaviour:
   rb: {fileID: 1786252725070823850}
   jumpForce: 0.62
   downSpeed: 1.5
-  m: 1.75
   isGrounded: 0
   doubleJump: 0
   downPressed: 0
   swj: 0
   t: 0
-  gravity: 1
+  d: 0
   v: {x: 0, y: 0}
   g: {fileID: 0}
   cl: {fileID: 1786252725070823855}
+  j: 0
 --- !u!114 &8189806388191135627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,7 @@ MonoBehaviour:
   cc: {fileID: 7854619245458654855, guid: cd875a3b6d1ffa74ba5a49bbd0559099, type: 3}
   coinText: {fileID: 0}
   coins: 0
-  currentScene: Triangle1s7
+  currentScene: Triangle1s8s
   player: {fileID: 1786252725070823849}
 --- !u!81 &9017862587617974530
 AudioListener:
@@ -199,3 +201,17 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786252725070823849}
   m_Enabled: 1
+--- !u!114 &202526227335426646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786252725070823849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d55e9b2d314e9541ab8f164a2d18891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttractor: {fileID: 0}
+  rb: {fileID: 0}

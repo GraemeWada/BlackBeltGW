@@ -94,7 +94,7 @@ public class Jump : MonoBehaviour
         {
             t = true;
             if(t && !isGrounded){
-                rb.velocity += Physics2D.gravity * fallMultiplier * Time.deltaTime;
+                rb.AddForce ( Physics2D.gravity * fallMultiplier * Time.deltaTime , ForceMode2D.Impulse);
             }
         }
 
