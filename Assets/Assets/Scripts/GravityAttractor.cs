@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GravityAttractor : MonoBehaviour
 {
-    public Vector2 attCenter = Vector2.zero;
-    public float attGravity = -9.81f;
+    public Vector3 attCenter = Vector2.zero;
+    public float attGravity /*= -9.81f */;
+    public bool repellant;
 
     public float attMass;
 
@@ -13,6 +14,7 @@ public class GravityAttractor : MonoBehaviour
     void Start()
     {
         attMass = this.GetComponentInParent<Rigidbody2D>().mass;
+        attCenter = this.transform.position;
     }
 
     // Update is called once per frame
@@ -21,33 +23,45 @@ public class GravityAttractor : MonoBehaviour
         
     }
     
-    public Vector2 FindSurface(Rigidbody2D rb)
+    public Vector3 FindSurface(Rigidbody2D rb)
     {
-        float distance = Vector2.Distance(this.transform.position, rb.transform.position);
-        Vector2 normal = Vector2.zero;
+        float distance = Vector3.Distance(this.transform.position, rb.transform.position);
+        Vector3 normal = Vector3.zero;
 
-        RaycastHit2D hit;
-        if(Physics2D.Raycast(rb.transform.position, -rb.transform.up, out hit, distance))
+        RaycastHit hit;
+
+        if(Physics.Raycast(rb.transform.position, -rb.transform.up, out hit, distance))
         {
             normal = hit.normal;
         }
         return normal;
     }
 
-    public void OrientBody(Rigidbody2D rb, Vector2 normal)
+    public void OrientBody(Rigidbody2D rb, Vector3 normal)
     {
-        rb.transform.localRotation = Quaternion.FromToRotation(rb.transform.up, normal) * rb.rotation;
+        rb.transform.localRotation = Quaternion.FromToRotation(rb.transform.up, normal)/* * rb.rotation*/;
     }
 
     public void Attract(Rigidbody2D rb)
     {
-        Vector2 pullVec = FindSurface(rb);
+        //Debug.Log("attract");
+        Vector3 pullVec = FindSurface(rb);
         OrientBody(rb, pullVec);
 
         float pullForce = 0.0f;
 
-        pullForce = attGravity * ((attMass * rb.mass)
-            / Math.Pow(Vector3.Distance(this.transform.position + attCenter, rb.transform.position), 2));
+        if (repellant)
+        {
+            pullForce = (attGravity * ((attMass * rb.mass)
+                / Mathf.Pow(Vector3.Distance(this.transform.position + attCenter, rb.transform.position), 2))) * -1;
+        }
+        else
+        {
+            pullForce = (attGravity * ((attMass * rb.mass)
+                / Mathf.Pow(Vector3.Distance(this.transform.position + attCenter, rb.transform.position), 2)));
+        }
+
+        Debug.Log(pullForce);
 
         pullVec = rb.transform.position - attCenter;
 

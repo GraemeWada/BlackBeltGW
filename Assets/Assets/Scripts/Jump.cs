@@ -16,6 +16,8 @@ public class Jump : MonoBehaviour
     public bool t;
     public bool d;
 
+    public GravityBody gb;
+
     public Vector2 v;
     public GravitySwitch g;
 
@@ -37,6 +39,7 @@ public class Jump : MonoBehaviour
         {
             v = new Vector2(0, 9.81f);
         }
+        gb = this.GetComponentInParent<GravityBody>();
     }
 
     void Update()
@@ -93,12 +96,19 @@ public class Jump : MonoBehaviour
         if(cl.v == 0 && !isGrounded)
         {
             t = true;
-            if(t && !isGrounded){
+            if (t && !isGrounded){
                 rb.AddForce ( Physics2D.gravity * fallMultiplier * Time.deltaTime , ForceMode2D.Impulse);
             }
         }
 
-        
+        if (!gb.useGravity)
+        {
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = 1;
+        }
     }
 
     void FixedUpdate(){
