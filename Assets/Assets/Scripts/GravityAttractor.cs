@@ -10,6 +10,8 @@ public class GravityAttractor : MonoBehaviour
 
     public float attMass;
 
+    public Vector3 pullVec;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +41,13 @@ public class GravityAttractor : MonoBehaviour
 
     public void OrientBody(Rigidbody2D rb, Vector3 normal)
     {
-        rb.transform.localRotation = Quaternion.FromToRotation(rb.transform.up, normal)/* * rb.rotation*/;
+        rb.transform.localRotation = Quaternion.FromToRotation(rb.transform.up, normal) * rb.transform.rotation;
     }
 
     public void Attract(Rigidbody2D rb)
     {
         //Debug.Log("attract");
-        Vector3 pullVec = FindSurface(rb);
+        pullVec = FindSurface(rb);
         OrientBody(rb, pullVec);
 
         float pullForce = 0.0f;
@@ -61,7 +63,7 @@ public class GravityAttractor : MonoBehaviour
                 / Mathf.Pow(Vector3.Distance(this.transform.position + attCenter, rb.transform.position), 2)));
         }
 
-        Debug.Log(pullForce);
+        Debug.Log(pullVec);
 
         pullVec = rb.transform.position - attCenter;
 

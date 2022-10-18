@@ -44,19 +44,6 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-        if (g != null)
-        {
-            if (!v.Equals(g.v))
-            {
-                v = g.v[g.GCCounter] * -1;
-            }
-        }
-
-        if(Physics2D.gravity * -1 != v)
-        {
-            v = Physics2D.gravity * -1;
-        }
-        
         if (Input.GetKeyDown("s") && !isGrounded && !downPressed)
         {
             rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
@@ -112,7 +99,7 @@ public class Jump : MonoBehaviour
     }
 
     void FixedUpdate(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, v * -1, 0.258f, 1 << 6);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
         Debug.DrawRay(transform.position, v * -1, Color.red);
         //Debug.Log(hit.collider.name);
         if(hit != false){
@@ -123,6 +110,15 @@ public class Jump : MonoBehaviour
         }
         else{
             isGrounded = false;
+        }
+
+        if (!gb.useGravity)
+        {
+            v = gb.pv.normalized * 9.81f;
+        }
+        else
+        {
+            RecalculateJump(g);
         }
     }
 
@@ -156,6 +152,22 @@ public class Jump : MonoBehaviour
         if (swj)
         {
             swj = false;
+        }
+    }
+
+    void RecalculateJump(GravitySwitch g)
+    {
+        if (g != null)
+        {
+            if (!v.Equals(g.v))
+            {
+                v = g.v[g.GCCounter] * -1;
+            }
+        }
+
+        if (Physics2D.gravity * -1 != v)
+        {
+            v = Physics2D.gravity * -1;
         }
     }
 }

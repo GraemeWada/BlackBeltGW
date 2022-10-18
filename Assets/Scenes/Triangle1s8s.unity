@@ -775,6 +775,17 @@ Transform:
   m_Father: {fileID: 1378012672}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057614633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 202526227335426646, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
+  m_PrefabInstance: {fileID: 1786252725833653776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d55e9b2d314e9541ab8f164a2d18891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1101913209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1242,7 @@ GameObject:
   - component: {fileID: 1997571909}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1252,6 +1263,7 @@ MonoBehaviour:
   attGravity: -9.81
   repellant: 0
   attMass: 0
+  pullVec: {x: 0, y: 0, z: 0}
 --- !u!58 &1997571909
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1267,7 +1279,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 3
 --- !u!58 &1997571910
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1341,8 +1353,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997571907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.84, y: 7.92, z: 9}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: -3.49, y: -4.64, z: 9}
+  m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -1626,6 +1638,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1786252725070823888, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
+      propertyPath: gb
+      value: 
+      objectReference: {fileID: 1057614633}
     - target: {fileID: 8189806388191135627, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
       propertyPath: coinText
       value: 
