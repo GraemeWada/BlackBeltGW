@@ -63,7 +63,7 @@ public class GravityAttractor : MonoBehaviour
                 / Mathf.Pow(Vector3.Distance(this.transform.position + attCenter, rb.transform.position), 2)));
         }
 
-        Debug.Log(pullVec);
+        //Debug.Log(pullVec);
 
         pullVec = rb.transform.position - attCenter;
 

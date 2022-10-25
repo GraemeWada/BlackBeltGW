@@ -73,10 +73,10 @@ public class Controls : MonoBehaviour
     {
         if (!gB.useGravity)
         {
-            RightV.x = gB.pv.normalized.y * -1;
-            RightV.y = gB.pv.normalized.x;
-            LeftV.x = gB.pv.normalized.y;
-            LeftV.y = gB.pv.normalized.x * -1;
+            LeftV.x = gB.pv.normalized.y * -1;
+            LeftV.y = gB.pv.normalized.x;
+            RightV.x = gB.pv.normalized.y;
+            RightV.y = gB.pv.normalized.x * -1;
         }
         if (gB.useGravity)
         {

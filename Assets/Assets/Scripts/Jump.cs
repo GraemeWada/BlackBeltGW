@@ -27,6 +27,7 @@ public class Jump : MonoBehaviour
 
     [Header("Test")]
     public bool j;
+    public float dist;
 
     void Start()
     {
@@ -99,10 +100,23 @@ public class Jump : MonoBehaviour
     }
 
     void FixedUpdate(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
-        Debug.DrawRay(transform.position, v * -1, Color.red);
-        //Debug.Log(hit.collider.name);
-        if(hit != false){
+        RaycastHit2D hit;
+        if (!gb.useGravity)
+        {
+            v = gb.pv.normalized * 9.81f;
+             hit = Physics2D.Raycast(transform.position, v * -1, dist, 1 << 6);
+            
+            Debug.Log(v * -dist);
+        }
+        else
+        {   
+             hit = Physics2D.Raycast(transform.position, v * -1, dist, 1 << 6);
+            RecalculateJump(g);
+        }
+        
+        Debug.DrawRay(transform.position, v.normalized * -0.265f, Color.red);
+        if(hit){
+            //Debug.Log(hit.collider.name);
             if(hit.collider.tag == "Floor")
             {
                 isGrounded = true;
@@ -112,21 +126,14 @@ public class Jump : MonoBehaviour
             isGrounded = false;
         }
 
-        if (!gb.useGravity)
-        {
-            v = gb.pv.normalized * 9.81f;
-        }
-        else
-        {
-            RecalculateJump(g);
-        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Floor")
         {
-            isGrounded = true;
+            //isGrounded = true;
             doubleJump = false;
             downPressed = false;
             swj = false;
