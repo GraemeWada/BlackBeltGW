@@ -5,9 +5,12 @@ using UnityEngine;
 public class GravityBody : MonoBehaviour
 {
     public GravityAttractor currentAttractor;
+    public Collider2D lastTrigger;
+    public Collider2D cac;
     public Rigidbody2D rb;
 
     public Vector3 pv;
+    public float pf;
 
     public bool useGravity;
     // Start is called before the first frame update
@@ -25,17 +28,40 @@ public class GravityBody : MonoBehaviour
             currentAttractor.Attract(rb);
             useGravity = false;
             pv = currentAttractor.pullVec;
+            pf = currentAttractor.pullForce;
         }
     }
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        currentAttractor = c.GetComponentInParent<GravityAttractor>();
+        if (c.gameObject.tag == "Planet")
+        {
+            currentAttractor = c.GetComponentInParent<GravityAttractor>();
+            cac = c;
+        }
+        else
+        {
+            if (c.gameObject.name != "Confiner")
+            {
+                lastTrigger = c;
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D c)
+    {
+        if (c.gameObject.name != "Confiner")
+        {
+            lastTrigger = c;
+        }
     }
 
     void OnTriggerExit2D()
     {
-        currentAttractor = null;
-        useGravity = true;
+        if (lastTrigger == cac)
+        {
+            currentAttractor = null;
+            useGravity = true;
+        }
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - WJB
   - PushZone
   - GS
+  - Planet
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,7 @@ public class Jump : MonoBehaviour
 
     [Header("Test")]
     public bool j;
-    public float dist;
+    public float pfm;
 
     void Start()
     {
@@ -104,22 +104,28 @@ public class Jump : MonoBehaviour
         if (!gb.useGravity)
         {
             v = gb.pv.normalized * 9.81f;
-             hit = Physics2D.Raycast(transform.position, v * -1, dist, 1 << 6);
+             hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
+            jumpForce = (Mathf.Abs(gb.pf) / pfm);
             
-            Debug.Log(v * -dist);
+            //Debug.Log(v * -dist);
         }
         else
         {   
-             hit = Physics2D.Raycast(transform.position, v * -1, dist, 1 << 6);
+             hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
             RecalculateJump(g);
+            jumpForce = 0.62f;
         }
         
-        Debug.DrawRay(transform.position, v.normalized * -0.265f, Color.red);
+        Debug.DrawRay(transform.position, v.normalized * -1, Color.red);
         if(hit){
             //Debug.Log(hit.collider.name);
             if(hit.collider.tag == "Floor")
             {
                 isGrounded = true;
+                t = false;
+                swj = false;
+                doubleJump = false;
+                downPressed = false;
             }
         }
         else{

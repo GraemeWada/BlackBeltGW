@@ -7,6 +7,7 @@ public class GravityAttractor : MonoBehaviour
     public Vector3 attCenter = Vector2.zero;
     public float attGravity /*= -9.81f */;
     public bool repellant;
+    public float pullForce;
 
     public float attMass;
 
@@ -50,7 +51,7 @@ public class GravityAttractor : MonoBehaviour
         pullVec = FindSurface(rb);
         OrientBody(rb, pullVec);
 
-        float pullForce = 0.0f;
+        pullForce = 0.0f;
 
         if (repellant)
         {
