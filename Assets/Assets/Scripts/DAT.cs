@@ -11,6 +11,6 @@ public class DAT : MonoBehaviour
     }
     void Delete()
     {
-        Destroy(this.transform.parent);
+        Destroy(this.gameObject);
     }
 }

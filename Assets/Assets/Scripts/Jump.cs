@@ -119,7 +119,7 @@ public class Jump : MonoBehaviour
         Debug.DrawRay(transform.position, v.normalized * -1, Color.red);
         if(hit){
             //Debug.Log(hit.collider.name);
-            if(hit.collider.tag == "Floor")
+            if(hit.collider.tag == "Floor" || hit.collider.tag == "Planet")
             {
                 isGrounded = true;
                 t = false;
