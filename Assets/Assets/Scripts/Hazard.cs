@@ -17,6 +17,9 @@ public class Hazard : MonoBehaviour
     public string currentScene;
 
     public GameObject player;
+
+    [Header("Test")]
+    public bool ClearCoins;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,11 @@ public class Hazard : MonoBehaviour
     void Update()
     {
         //pos = transform.position;
+        if (ClearCoins)
+        {
+            ClearCoins = false;
+            PlayerPrefs.DeleteKey("Coins");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,6 +64,9 @@ public class Hazard : MonoBehaviour
             temp.transform.rotation = new Quaternion(0,0,0,0);
             temp.transform.localScale = new Vector3(1,1,1);
             temp.GetComponent<ParticleSystem>().Play();
+
+            PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins")+1));
+            Debug.Log(PlayerPrefs.GetInt("Coins"));
         }
     }
 

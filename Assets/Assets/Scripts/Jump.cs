@@ -139,7 +139,7 @@ public class Jump : MonoBehaviour
     {
         if(other.gameObject.tag == "Floor")
         {
-            //isGrounded = true;
+            isGrounded = true;
             doubleJump = false;
             downPressed = false;
             swj = false;

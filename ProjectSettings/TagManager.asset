@@ -12,6 +12,7 @@ TagManager:
   - PushZone
   - GS
   - Planet
+  - WeightedObject
   layers:
   - Default
   - TransparentFX
