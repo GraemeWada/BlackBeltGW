@@ -9,6 +9,8 @@ public class WeightButton : MonoBehaviour
 
     public bool pressed;
 
+    public RaycastHit2D[] hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +22,33 @@ public class WeightButton : MonoBehaviour
     void Update()
     {
         Move(pressed);
+        hit = Physics2D.RaycastAll(transform.position, Vector2.up, 1.0f);
+        Debug.DrawRay(transform.position, Vector2.up, Color.red);
+        foreach (RaycastHit2D i in hit)
+        {
+            if (i)
+            {
+                if (i.collider.tag == "WeightedObject" || i.collider.tag == "Player")
+                {
+                    pressed = true;
+
+                }
+                else if (i.collider.tag == "Button") {
+                    continue;
+                }
+                else { pressed = false; }
+            }
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D c)
+    /*void OnCollisionEnter2D(Collision2D c)
     {
         if(c.gameObject.tag == "WeightedObject" || c.gameObject.tag == "Player")
         {
             pressed = true;
             //Debug.Log(c.gameObject.name);
         }
+        
     }
 
     void OnCollisionStay2D(Collision2D c)
@@ -40,7 +60,7 @@ public class WeightButton : MonoBehaviour
     void OnCollisionExit2D()
     {
         if (pressed) { pressed = false; }
-    }
+    }*/
 
     void Move(bool p)
     {

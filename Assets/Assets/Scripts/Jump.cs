@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +47,7 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetKeyDown("s") && !isGrounded && !downPressed)
         {
-            rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
+            rb.AddForce(v * downSpeed *  -1, ForceMode2D.Impulse);
             downPressed = true;
         }
         if(isGrounded){

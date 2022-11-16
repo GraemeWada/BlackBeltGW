@@ -148,6 +148,7 @@ MonoBehaviour:
   g: {fileID: 0}
   temp: 0
   t: {x: 0, y: 0}
+  gB: {fileID: 0}
 --- !u!114 &1786252725070823888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,17 +163,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1786252725070823850}
   jumpForce: 0.62
-  downSpeed: 1.5
+  downSpeed: 2
   isGrounded: 0
   doubleJump: 0
   downPressed: 0
   swj: 0
   t: 0
   d: 0
+  gb: {fileID: 202526227335426646}
   v: {x: 0, y: 0}
   g: {fileID: 0}
   cl: {fileID: 1786252725070823855}
   j: 0
+  pfm: 1175
 --- !u!114 &8189806388191135627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +194,9 @@ MonoBehaviour:
   cc: {fileID: 7854619245458654855, guid: cd875a3b6d1ffa74ba5a49bbd0559099, type: 3}
   coinText: {fileID: 0}
   coins: 0
-  currentScene: Triangle1s8s
+  currentScene: Triangle1s9
   player: {fileID: 1786252725070823849}
+  ClearCoins: 0
 --- !u!81 &9017862587617974530
 AudioListener:
   m_ObjectHideFlags: 0
@@ -214,4 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAttractor: {fileID: 0}
+  lastTrigger: {fileID: 0}
+  cac: {fileID: 0}
   rb: {fileID: 0}
+  pv: {x: 0, y: 0, z: 0}
+  pf: 0
+  useGravity: 0
