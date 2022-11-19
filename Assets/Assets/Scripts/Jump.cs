@@ -16,6 +16,9 @@ public class Jump : MonoBehaviour
     public bool t;
     public bool d;
 
+    public bool s;
+    public GameObject sObject;
+
     public GravityBody gb;
 
     public Vector2 v;
@@ -45,10 +48,18 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("s") && !isGrounded && !downPressed)
+        if (Input.GetKeyDown("s") && !downPressed)
         {
-            rb.AddForce(v * downSpeed *  -1, ForceMode2D.Impulse);
-            downPressed = true;
+            if (!isGrounded)
+            {
+                rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
+                downPressed = true;
+            }
+            else if (s)
+            {
+                sObject.GetComponent<PlatformEffector2D>().surfaceArc = 0;
+                s = false;
+            }
         }
         if(isGrounded){
             d = false;
@@ -119,17 +130,24 @@ public class Jump : MonoBehaviour
         Debug.DrawRay(transform.position, v.normalized * -1, Color.red);
         if(hit){
             //Debug.Log(hit.collider.name);
-            if(hit.collider.tag == "Floor" || hit.collider.tag == "Planet")
+            if(hit.collider.tag == "Floor" || hit.collider.tag == "Planet" || hit.collider.tag == "Semi")
             {
                 isGrounded = true;
                 t = false;
                 swj = false;
                 doubleJump = false;
                 downPressed = false;
+                if(hit.collider.tag == "Semi")
+                {
+                    sObject = hit.collider.gameObject;
+                    s = true;
+                    Invoke("ResetSemi", 2.0f);
+                }
             }
         }
         else{
             isGrounded = false;
+            s = false;
         }
 
         
@@ -182,5 +200,10 @@ public class Jump : MonoBehaviour
         {
             v = Physics2D.gravity * -1;
         }
+    }
+
+    void ResetSemi()
+    {
+        sObject.GetComponent<PlatformEffector2D>().surfaceArc = 90;
     }
 }
