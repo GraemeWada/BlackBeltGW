@@ -22,7 +22,7 @@ public class PuzzleButton : MonoBehaviour
     void Update()
     {
         Move(pressed);
-        hit = Physics2D.RaycastAll(transform.position, Vector2.up, 1.0f);
+        /*hit = Physics2D.RaycastAll(transform.position, Vector2.up, 1.0f);
         Debug.DrawRay(transform.position, Vector2.up, Color.red);
         foreach (RaycastHit2D i in hit)
         {
@@ -39,7 +39,7 @@ public class PuzzleButton : MonoBehaviour
                 }
                 else { pressed = false; }
             }
-        }
+        }*/
     }
 
     /*void OnCollisionEnter2D(Collision2D c)
@@ -52,16 +52,22 @@ public class PuzzleButton : MonoBehaviour
         
     }
 
-    void OnCollisionStay2D(Collision2D c)
-    {
-        if (c.gameObject.tag == "WeightedObject" || c.gameObject.tag == "Player") { pressed = true; }
-        //Debug.Log(c.gameObject.name);
-    }
+    
 
     void OnCollisionExit2D()
     {
         if (pressed) { pressed = false; }
     }*/
+    void OnTriggerStay2D(Collider2D c)
+    {
+        if (c.gameObject.tag == "Player") { pressed = true; }
+        //Debug.Log(c.gameObject.name);
+    }
+    void OnTriggerExit2D()
+    {
+        if (pressed) { pressed = false; }
+        //Debug.Log(c.gameObject.name);
+    }
 
     void Move(bool p)
     {

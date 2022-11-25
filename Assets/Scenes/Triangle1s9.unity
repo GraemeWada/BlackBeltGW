@@ -2232,6 +2232,8 @@ GameObject:
   - component: {fileID: 6600846063468516514}
   - component: {fileID: 6600846063468516543}
   - component: {fileID: 6600846063468516515}
+  - component: {fileID: 6600846063468516544}
+  - component: {fileID: 6600846063468516545}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -2254,6 +2256,56 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   startpos: {x: 0.5155001, y: 8.761, z: 0}
   pressed: 0
+--- !u!114 &6600846063468516544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600846063468516542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b38569e2a6b0984fb3f45d567d36342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wb: {fileID: 0}
+  press: 0
+  spawn: {x: 0, y: 0, z: 0}
+  limit: 12
+  objCount: 0
+  wObj:
+  - {fileID: 9917833052706334, guid: bd1c8f524ce29a341b1b4aa472350a95, type: 3}
+  - {fileID: 7758980766463300839, guid: f48faf1d77fa9ab45938d50febe62227, type: 3}
+  - {fileID: 6409786579004694760, guid: ccd68710fd8422646b58592b370cd862, type: 3}
+  - {fileID: 6022585935268001992, guid: 82f0e13f5d0df2d48be652c2f3c0abd5, type: 3}
+  - {fileID: 233683741860028591, guid: c02f5a811f16b8f40ba92a46da281cd0, type: 3}
+  - {fileID: 4072351912707511702, guid: 0c003506c2e84d04a9e65bc4c483537c, type: 3}
+--- !u!61 &6600846063468516545
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600846063468516542}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.11273265}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1.225467}
+  m_EdgeRadius: 0
 --- !u!1 &6600846064709637306
 GameObject:
   m_ObjectHideFlags: 0

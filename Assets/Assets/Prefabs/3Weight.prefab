@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7758980766463300835}
   - component: {fileID: 7758980766463300834}
   - component: {fileID: 7758980766463300833}
+  - component: {fileID: 6248532192552206644}
   m_Layer: 0
   m_Name: 3Weight
   m_TagString: WeightedObject
@@ -168,3 +169,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6248532192552206644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7758980766463300839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a12f116b8718a942923562d7f0a1a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 3

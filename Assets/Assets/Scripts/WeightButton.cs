@@ -7,9 +7,16 @@ public class WeightButton : MonoBehaviour
     public Vector3 target;
     public Vector3 startpos;
 
+    public int buttonWeight;
+
     public bool pressed;
 
     public RaycastHit2D[] hit;
+
+    private List<Collider2D> tList = new List<Collider2D>();
+    private List<int> weights = new List<int>();
+    private List<int> ids = new List<int>();
+    public int weight;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +35,16 @@ public class WeightButton : MonoBehaviour
         {
             if (i)
             {
-                if (i.collider.tag == "WeightedObject" || i.collider.tag == "Player")
+                if (i.collider.tag == "WeightedObject")
+                {
+                    if (!ids.Contains(i.collider.GetComponentInParent<WeightVal>().id))
+                    {
+                        weight += i.collider.GetComponentInParent<WeightVal>().weight;
+                    }
+                }
+                else if (i.collider.tag == "Player")
                 {
                     pressed = true;
-
                 }
                 else if (i.collider.tag == "Button") {
                     continue;
@@ -39,28 +52,32 @@ public class WeightButton : MonoBehaviour
                 else { pressed = false; }
             }
         }
-    }
-
-    /*void OnCollisionEnter2D(Collision2D c)
-    {
-        if(c.gameObject.tag == "WeightedObject" || c.gameObject.tag == "Player")
+        if(weight >= buttonWeight)
         {
             pressed = true;
-            //Debug.Log(c.gameObject.name);
         }
-        
     }
 
-    void OnCollisionStay2D(Collision2D c)
+    void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.gameObject.tag == "WeightedObject" || c.gameObject.tag == "Player") { pressed = true; }
-        //Debug.Log(c.gameObject.name);
+        int id = c.gameObject.GetComponent<WeightValue>().id;
+        if (c.gameObject.tag == "WeightObject" && !tList.Contains(c) && !ids.Contains(id))
+        {
+            tList.Add(c);
+            ids.Add(id);
+        }
     }
 
-    void OnCollisionExit2D()
+    void OnCollisionExit2D(Collider2D c)
     {
-        if (pressed) { pressed = false; }
-    }*/
+        int id = c.gameObject.GetComponent<WeightValue>().id;
+        if (c.gameObject.tag == "WeightObject" && tList.Contains(c) && ids.Contains(id))
+        {
+            tList.Remove(c);
+            ids.Remove(id);
+            weight -= c.gameObject.GetComponent<WeightValue>().weight;
+        }
+    }
 
     void Move(bool p)
     {

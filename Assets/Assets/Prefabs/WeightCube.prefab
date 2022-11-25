@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6409786579004694759}
   - component: {fileID: 6409786579004694758}
   - component: {fileID: 6409786579004694761}
+  - component: {fileID: -4112720387026694927}
   m_Layer: 0
   m_Name: WeightCube
   m_TagString: WeightedObject
@@ -51,7 +52,7 @@ MeshRenderer:
   m_GameObject: {fileID: 6409786579004694760}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8e6a96be2618e054396e15170b850b6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,3 +131,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4112720387026694927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409786579004694760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a12f116b8718a942923562d7f0a1a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 4
