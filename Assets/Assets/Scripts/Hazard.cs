@@ -20,10 +20,12 @@ public class Hazard : MonoBehaviour
 
     [Header("Test")]
     public bool ClearCoins;
+    public int playerprefcoins;
     // Start is called before the first frame update
     void Start()
     {
         coins = 0;
+        playerprefcoins = PlayerPrefs.GetInt("Coins");
     }
 
     // Update is called once per frame

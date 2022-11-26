@@ -56,26 +56,41 @@ public class WeightButton : MonoBehaviour
         {
             pressed = true;
         }
+        //Debug.Log(weight);
     }
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        int id = c.gameObject.GetComponent<WeightValue>().id;
-        if (c.gameObject.tag == "WeightObject" && !tList.Contains(c) && !ids.Contains(id))
+        //Debug.Log(c.gameObject.name);
+        
+        if (c.gameObject.tag == "WeightedObject")
         {
-            tList.Add(c);
-            ids.Add(id);
+            int id = c.gameObject.GetComponent<WeightVal>().id;
+            if (!tList.Contains(c) && !ids.Contains(id))
+            {
+                weight += c.gameObject.GetComponent<WeightVal>().weight;
+                tList.Add(c);
+                ids.Add(id);
+            }
+            
         }
+            foreach (int i in ids)
+            {
+                Debug.Log(i);
+            }
     }
 
-    void OnCollisionExit2D(Collider2D c)
+    void OnTriggerExit2D(Collider2D c)
     {
-        int id = c.gameObject.GetComponent<WeightValue>().id;
-        if (c.gameObject.tag == "WeightObject" && tList.Contains(c) && ids.Contains(id))
+        if (c.gameObject.tag == "WeightedObject")
         {
-            tList.Remove(c);
-            ids.Remove(id);
-            weight -= c.gameObject.GetComponent<WeightValue>().weight;
+            int id = c.gameObject.GetComponent<WeightVal>().id;
+            if (tList.Contains(c) && ids.Contains(id))
+            {
+                weight -= c.gameObject.GetComponent<WeightVal>().weight;
+                tList.Remove(c);
+                ids.Remove(id);
+            }
         }
     }
 
