@@ -14,12 +14,15 @@ public class ButtonScript : MonoBehaviour
 
     public string nextLevel;
 
+    public Hazard h;
+
+    private bool a;
+
     // Start is called before the first frame update
     void Start()
     {
-        //target = targetA.transform.localPosition;
+        h = GameObject.Find("Player(9)").GetComponent<Hazard>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +30,11 @@ public class ButtonScript : MonoBehaviour
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime);
             Invoke("NextLevel", 1.5f);
+            if (!a)
+            {
+                a = true;
+                Invoke("F", 0.5f);
+            }
         }
     }
 
@@ -41,6 +49,13 @@ public class ButtonScript : MonoBehaviour
 
     void NextLevel()
     {
+        
         SceneManager.LoadScene(nextLevel);
+    }
+
+    void F()
+    {
+        PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins")+h.coins));
+        Debug.Log(PlayerPrefs.GetInt("Coins"));
     }
 }

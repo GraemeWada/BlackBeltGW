@@ -170,12 +170,15 @@ MonoBehaviour:
   swj: 0
   t: 0
   d: 0
+  s: 0
+  sObject: {fileID: 0}
   gb: {fileID: 202526227335426646}
   v: {x: 0, y: 0}
   g: {fileID: 0}
   cl: {fileID: 1786252725070823855}
   j: 0
   pfm: 1175
+  rTime: 1
 --- !u!114 &8189806388191135627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +200,7 @@ MonoBehaviour:
   currentScene: Triangle1s9
   player: {fileID: 1786252725070823849}
   ClearCoins: 0
+  playerprefcoins: 0
 --- !u!81 &9017862587617974530
 AudioListener:
   m_ObjectHideFlags: 0

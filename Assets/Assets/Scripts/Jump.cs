@@ -31,6 +31,7 @@ public class Jump : MonoBehaviour
     [Header("Test")]
     public bool j;
     public float pfm;
+    public float rTime;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class Jump : MonoBehaviour
             {
                 sObject.GetComponent<PlatformEffector2D>().surfaceArc = 0;
                 s = false;
+                Invoke("ResetSemi", rTime);
             }
         }
         if(isGrounded){
@@ -141,7 +143,6 @@ public class Jump : MonoBehaviour
                 {
                     sObject = hit.collider.gameObject;
                     s = true;
-                    Invoke("ResetSemi", 2.0f);
                 }
             }
         }

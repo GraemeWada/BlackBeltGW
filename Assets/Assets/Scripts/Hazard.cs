@@ -66,9 +66,6 @@ public class Hazard : MonoBehaviour
             temp.transform.rotation = new Quaternion(0,0,0,0);
             temp.transform.localScale = new Vector3(1,1,1);
             temp.GetComponent<ParticleSystem>().Play();
-
-            PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins")+1));
-            Debug.Log(PlayerPrefs.GetInt("Coins"));
         }
     }
 

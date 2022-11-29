@@ -7,13 +7,22 @@ public class PauseButton : MonoBehaviour
 {
     public GameObject pauseMenu;
     public string currentScene;
+    public bool a = false;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && !a)
         {
             // Debug.Log("f");
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
+            a = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && a)
+        {
+            // Debug.Log("f");
+            Time.timeScale = 1;
+            pauseMenu.SetActive(false);
+            a = false;
         }
     }
     public void Resume()
