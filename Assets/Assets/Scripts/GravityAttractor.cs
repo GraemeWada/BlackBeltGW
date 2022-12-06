@@ -13,17 +13,19 @@ public class GravityAttractor : MonoBehaviour
 
     public Vector3 pullVec;
 
+    public bool useRbMass;
+
     // Start is called before the first frame update
     void Start()
     {
-        attMass = this.GetComponentInParent<Rigidbody2D>().mass;
+        if (useRbMass) { attMass = this.GetComponentInParent<Rigidbody2D>().mass; }
         attCenter = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        attCenter = this.transform.position;
     }
     
     public Vector3 FindSurface(Rigidbody2D rb)
