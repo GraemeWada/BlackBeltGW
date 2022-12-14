@@ -60,6 +60,7 @@ public class GravityBody : MonoBehaviour
     {
         if (lastTrigger == cac)
         {
+            Debug.Log("Exit");
             currentAttractor = null;
             useGravity = true;
         }
