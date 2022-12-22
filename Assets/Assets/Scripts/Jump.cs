@@ -28,6 +28,8 @@ public class Jump : MonoBehaviour
 
     float fallMultiplier = 1.5f;
 
+    public float f;
+
     [Header("Test")]
     public bool j;
     public float pfm;
@@ -113,20 +115,28 @@ public class Jump : MonoBehaviour
     }
 
     void FixedUpdate(){
+
         RaycastHit2D hit;
         if (!gb.useGravity)
         {
+
+            jumpForce = Mathf.Abs(((rb.mass) / Mathf.Pow(Vector3.Distance(gb.currentAttractor.attCenter, rb.transform.position), 2)));
             v = gb.pv.normalized * 9.81f;
              hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
-            jumpForce = (Mathf.Abs(gb.pf) / pfm);
-            
-            //Debug.Log(v * -dist);
+
+            if(Mathf.Abs(gb.pf) > Mathf.Abs(f))
+            {
+                f = gb.pf;
+            }
+            cl.speed = Mathf.Abs(f * 0.0085f);
         }
         else
         {   
              hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
             RecalculateJump(g);
             jumpForce = 0.62f;
+            f = 0;
+            cl.speed = 12;
         }
         
         Debug.DrawRay(transform.position, v.normalized * -1, Color.red);
