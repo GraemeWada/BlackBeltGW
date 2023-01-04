@@ -39,14 +39,14 @@ public class Controls : MonoBehaviour
         v = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(rb.velocity.x), 2) + Mathf.Pow(Mathf.Abs(rb.velocity.y), 2));
         //float h = Input.GetAxis("Horizontal");
 
-        if (Input.GetAxis("Horizontal") < 0 && (v * -1) > (speedcap * -1) && gB.useGravity)
+        if (Input.GetAxis("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && gB.useGravity)
         {
             rb.AddForce(LeftV * speed * 1.3f * Time.deltaTime, ForceMode2D.Impulse);
             //rb.AddForce(Vector2.left * speed* Time.deltaTime, ForceMode2D.Impulse);
             //Debug.Log(v);
             //Left
         }
-        else if (Input.GetAxis("Horizontal") < 0 && (v * -1) > (speedcap * -1) && !gB.useGravity){
+        else if (Input.GetAxis("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && !gB.useGravity){
             rb.AddForce(LeftV * speed * Time.deltaTime, ForceMode2D.Impulse);
         }
         if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
@@ -76,6 +76,7 @@ public class Controls : MonoBehaviour
     {
         if (!gB.useGravity)
         {
+            //speedcap = 6;
             LeftV.x = gB.pv.normalized.y * -1;
             LeftV.y = gB.pv.normalized.x;
             RightV.x = gB.pv.normalized.y;

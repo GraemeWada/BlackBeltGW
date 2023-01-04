@@ -30,6 +30,9 @@ public class Jump : MonoBehaviour
 
     public float f;
 
+    public List<ContactPoint2D> contacts = new List<ContactPoint2D>();
+    public ContactPoint2D planet;
+
     [Header("Test")]
     public bool j;
     public float pfm;
@@ -119,8 +122,18 @@ public class Jump : MonoBehaviour
         RaycastHit2D hit;
         if (!gb.useGravity)
         {
+            rb.GetContacts(contacts);
+            foreach (ContactPoint2D cp2d in contacts)
+            {
+                if(cp2d.collider.tag == "Planet")
+                {
+                    planet = cp2d;
+                    Debug.Log(planet.point);
+                }
+            }
 
-            jumpForce = Mathf.Abs(((rb.mass) / Mathf.Pow(Vector3.Distance(gb.currentAttractor.attCenter, rb.transform.position), 2)));
+            jumpForce = Mathf.Abs(((rb.mass*gb.pf/10) / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
+
             v = gb.pv.normalized * 9.81f;
              hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
 
@@ -129,6 +142,8 @@ public class Jump : MonoBehaviour
                 f = gb.pf;
             }
             cl.speed = Mathf.Abs(f * 0.0085f);
+
+            
         }
         else
         {   

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GravityAttractor : MonoBehaviour
 {
-    public Vector3 attCenter = Vector2.zero;
+    public Vector2 attCenter;
     public float attGravity /*= -9.81f */;
     public bool repellant;
     public float pullForce;
@@ -19,7 +19,7 @@ public class GravityAttractor : MonoBehaviour
     void Start()
     {
         if (useRbMass) { attMass = this.GetComponentInParent<Rigidbody2D>().mass; }
-        attCenter = this.transform.position;
+        attCenter = new Vector2(this.transform.position.x, this.transform.position.y);
     }
 
     // Update is called once per frame
@@ -58,17 +58,17 @@ public class GravityAttractor : MonoBehaviour
         if (repellant)
         {
             pullForce = (attGravity * ((attMass * rb.mass)
-                / Mathf.Pow(Vector3.Distance(this.transform.position + attCenter, rb.transform.position), 2))) * -1;
+                / Mathf.Pow(Vector2.Distance(attCenter, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2))) * -1;
         }
         else
         {
             pullForce = (attGravity * ((attMass * rb.mass)
-                / Mathf.Pow(Vector3.Distance(attCenter, rb.transform.position), 2)));
+                / Mathf.Pow(Vector2.Distance(attCenter, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2)));
         }
 
         //Debug.Log(pullVec);
 
-        pullVec = rb.transform.position - attCenter;
+        pullVec = new Vector2(rb.transform.position.x, rb.transform.position.y) - attCenter;
 
         rb.AddForce(pullVec.normalized * pullForce * Time.deltaTime);
     }
