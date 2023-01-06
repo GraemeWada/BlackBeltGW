@@ -132,7 +132,7 @@ public class Jump : MonoBehaviour
                 }
             }
 
-            jumpForce = Mathf.Abs(((rb.mass*gb.pf/10) / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
+            jumpForce = Mathf.Abs((rb.mass*(gb.pf/gb.currentAttractor.attMass)*8 / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
 
             v = gb.pv.normalized * 9.81f;
              hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);

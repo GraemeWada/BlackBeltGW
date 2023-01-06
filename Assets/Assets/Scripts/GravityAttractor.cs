@@ -42,6 +42,29 @@ public class GravityAttractor : MonoBehaviour
         return normal;
     }
 
+    public Vector2 FindNearestPointOnSurface(Rigidbody2D rb)
+    {
+        Vector2 point = Vector2.zero;
+
+        RaycastHit2D RcH2D;
+
+        Vector2 dir = new Vector2(rb.transform.position.x, rb.transform.position.y) - attCenter;
+
+        float distance = Vector3.Distance(this.transform.position, rb.transform.position);
+
+        RcH2D = Physics2D.Raycast(rb.transform.position, dir, distance, 1 << 6);
+
+        if (RcH2D)
+        {
+            if(RcH2D.collider.tag == "Planet")
+            {
+                point = RcH2D.point;
+            }
+        }
+
+        return point;
+    }
+
     public void OrientBody(Rigidbody2D rb, Vector3 normal)
     {
         rb.transform.localRotation = Quaternion.FromToRotation(rb.transform.up, normal) * rb.transform.rotation;
@@ -62,6 +85,7 @@ public class GravityAttractor : MonoBehaviour
         }
         else
         {
+            //TODO: If FindNearestPointOnSurface != 0,0 do distance from FNPOS otherwise from centre.
             pullForce = (attGravity * ((attMass * rb.mass)
                 / Mathf.Pow(Vector2.Distance(attCenter, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2)));
         }

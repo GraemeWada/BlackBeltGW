@@ -13,11 +13,14 @@ public class GravityBody : MonoBehaviour
     public float pf;
 
     public bool useGravity;
+
+    public Jump j;
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponentInParent<Rigidbody2D>();
         useGravity = true;
+        j = this.GetComponentInParent<Jump>();
     }
 
     // Update is called once per frame
