@@ -80,24 +80,7 @@ public class Jump : MonoBehaviour
                 rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
                 t = false;
         }
-
-        if(Input.GetButtonDown("Jump")){
-            if (isGrounded)
-            {
-                rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
-                t = false;
-            }
-            if (doubleJump)
-            {
-                rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
-                doubleJump = false;
-            }
-            if (swj)
-            {
-                rb.AddForce(v * jumpForce * 1.75f, ForceMode2D.Impulse);
-                swj = false;
-            }
-        }
+Debug.Log("jf: " + jumpForce + " pf: " + gb.pf + " v: " + cl.v);
 
         if(cl.v == 0 && !isGrounded)
         {
@@ -128,22 +111,22 @@ public class Jump : MonoBehaviour
                 if(cp2d.collider.tag == "Planet")
                 {
                     planet = cp2d;
-                    Debug.Log(planet.point);
+                    //Debug.Log(planet.point);
                 }
             }
 
-            jumpForce = Mathf.Abs((rb.mass*(gb.pf/gb.currentAttractor.attMass)*8 / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
+            jumpForce = Mathf.Abs((rb.mass*(gb.pf/gb.currentAttractor.attMass) / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
 
             v = gb.pv.normalized * 9.81f;
              hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
 
-            if(Mathf.Abs(gb.pf) > Mathf.Abs(f))
-            {
-                f = gb.pf;
-            }
-            cl.speed = Mathf.Abs(f * 0.0085f);
+            //if(Mathf.Abs(gb.pf) > Mathf.Abs(f))
+            //{
+            //    f = gb.pf;
+            //}
+            cl.speed = Mathf.Abs((rb.mass * (gb.pf/1.5f) / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
 
-            
+
         }
         else
         {   
@@ -231,5 +214,28 @@ public class Jump : MonoBehaviour
     void ResetSemi()
     {
         sObject.GetComponent<PlatformEffector2D>().surfaceArc = 90;
+    }
+
+    void LateUpdate()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isGrounded)
+            {
+
+                rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
+                t = false;
+            }
+            if (doubleJump)
+            {
+                rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
+                doubleJump = false;
+            }
+            if (swj)
+            {
+                rb.AddForce(v * jumpForce * 1.75f, ForceMode2D.Impulse);
+                swj = false;
+            }
+        }
     }
 }

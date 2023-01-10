@@ -24,7 +24,7 @@ public class GravityBody : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         if(currentAttractor != null && rb != null)
         {
