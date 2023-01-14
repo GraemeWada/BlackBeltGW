@@ -80,7 +80,7 @@ public class Jump : MonoBehaviour
                 rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
                 t = false;
         }
-Debug.Log("jf: " + jumpForce + " pf: " + gb.pf + " v: " + cl.v);
+//Debug.Log("jf: " + jumpForce + " pf: " + gb.pf + " v: " + cl.v);
 
         if(cl.v == 0 && !isGrounded)
         {
@@ -100,6 +100,11 @@ Debug.Log("jf: " + jumpForce + " pf: " + gb.pf + " v: " + cl.v);
         }
     }
 
+    public Vector2 GetV2(Rigidbody2D rb)
+    {
+        return new Vector2(rb.transform.position.x, rb.transform.position.y);
+    }
+
     void FixedUpdate(){
 
         RaycastHit2D hit;
@@ -115,16 +120,13 @@ Debug.Log("jf: " + jumpForce + " pf: " + gb.pf + " v: " + cl.v);
                 }
             }
 
-            jumpForce = Mathf.Abs((rb.mass*(gb.pf/gb.currentAttractor.attMass) / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
+            jumpForce = Mathf.Abs((rb.mass*gb.pf/(gb.currentAttractor.attMass*900)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
 
             v = gb.pv.normalized * 9.81f;
              hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
 
-            //if(Mathf.Abs(gb.pf) > Mathf.Abs(f))
-            //{
-            //    f = gb.pf;
-            //}
-            cl.speed = Mathf.Abs((rb.mass * (gb.pf/1.5f) / Mathf.Pow(Vector3.Distance(planet.point, rb.transform.position), 2)));
+            f= gb.currentAttractor.attGravity * ((gb.currentAttractor.attMass * rb.mass) / Mathf.Pow(0.25f, 2));
+            cl.speed = Mathf.Abs((rb.mass * f / (gb.currentAttractor.attMass * 11.5f)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
 
 
         }
