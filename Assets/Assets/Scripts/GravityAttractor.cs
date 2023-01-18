@@ -15,11 +15,14 @@ public class GravityAttractor : MonoBehaviour
 
     public bool useRbMass;
 
+    public float colRad;
+
     // Start is called before the first frame update
     void Start()
     {
         if (useRbMass) { attMass = this.GetComponentInParent<Rigidbody2D>().mass; }
         attCenter = new Vector2(this.transform.position.x, this.transform.position.y);
+        colRad = this.GetComponentInParent<CircleCollider2D>().radius;
     }
 
     // Update is called once per frame
@@ -81,34 +84,35 @@ public class GravityAttractor : MonoBehaviour
 
         pullForce = 0.0f;
         if (FindNearestPointOnSurface(rb) != new Vector2(0, 0))
-        {
+        {   
             Vector2 surface = FindNearestPointOnSurface(rb);
-            if (repellant)
-            {
-                pullForce = (attGravity * ((attMass * rb.mass)
-                    / Mathf.Pow(Vector2.Distance(surface, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2))) * -1;
+            if (Vector2.Distance(surface, new Vector2(rb.transform.position.x, rb.transform.position.y)) > 0.5f) {
+                
+                if (repellant)
+                {
+                    pullForce = (attGravity * ((attMass * rb.mass)
+                        / Mathf.Pow(Vector2.Distance(surface, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2))) * -1;
+                }
+                else
+                {
+                    pullForce = (attGravity * ((attMass * rb.mass)
+                        / Mathf.Pow(Vector2.Distance(surface, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2)));
+                }
             }
             else
             {
-                //TODO: If FindNearestPointOnSurface != 0,0 do distance from FNPOS otherwise from centre.
-                pullForce = (attGravity * ((attMass * rb.mass)
-                    / Mathf.Pow(Vector2.Distance(surface, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2)));
+                if (repellant)
+                {
+                    pullForce = (attGravity * ((attMass * rb.mass)
+                        / 0.125f)) * -1;
+                }
+                else
+                {
+                    pullForce = (attGravity * ((attMass * rb.mass)
+                        / 0.125f));
+                }
             }
         } 
-        else
-        {
-            if (repellant)
-            {
-                pullForce = (attGravity * ((attMass * rb.mass)
-                    / Mathf.Pow(Vector2.Distance(attCenter, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2))) * -1;
-            }
-            else
-            {
-                //TODO: If FindNearestPointOnSurface != 0,0 do distance from FNPOS otherwise from centre.
-                pullForce = (attGravity * ((attMass * rb.mass)
-                    / Mathf.Pow(Vector2.Distance(attCenter, new Vector2(rb.transform.position.x, rb.transform.position.y)), 2)));
-            }
-        }
 
         //Debug.Log(pullVec);
 

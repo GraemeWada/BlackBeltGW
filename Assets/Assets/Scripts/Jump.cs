@@ -107,28 +107,35 @@ public class Jump : MonoBehaviour
 
     void FixedUpdate(){
 
-        RaycastHit2D hit;
+        RaycastHit2D hit; 
         if (!gb.useGravity)
         {
+
+            hit = Physics2D.Raycast(transform.position, v * -1, 0.35f, 1 << 6);
             rb.GetContacts(contacts);
             foreach (ContactPoint2D cp2d in contacts)
             {
                 if(cp2d.collider.tag == "Planet")
                 {
                     planet = cp2d;
-                    //Debug.Log(planet.point);
                 }
             }
 
-            jumpForce = Mathf.Abs((rb.mass*gb.pf/(gb.currentAttractor.attMass*900)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
 
+
+            if (Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)) > 0.5f)
+            {
+                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass * 1.75f, 2)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
+            }
+            else
+            {
+                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass, 2)) / 0.125f);
+            }
             v = gb.pv.normalized * 9.81f;
-             hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
+             
 
-            f= gb.currentAttractor.attGravity * ((gb.currentAttractor.attMass * rb.mass) / Mathf.Pow(0.25f, 2));
-            cl.speed = Mathf.Abs((rb.mass * f / (gb.currentAttractor.attMass * 11.5f)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
-
-
+            f = gb.currentAttractor.attGravity * ((gb.currentAttractor.attMass) / 0.0625f);
+            cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3)/2) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
         }
         else
         {   
