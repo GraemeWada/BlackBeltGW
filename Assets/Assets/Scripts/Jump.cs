@@ -33,6 +33,8 @@ public class Jump : MonoBehaviour
     public List<ContactPoint2D> contacts = new List<ContactPoint2D>();
     public ContactPoint2D planet;
 
+    Vector2 floorpoint;
+
     [Header("Test")]
     public bool j;
     public float pfm;
@@ -107,7 +109,17 @@ public class Jump : MonoBehaviour
 
     void FixedUpdate(){
 
-        RaycastHit2D hit; 
+        RaycastHit2D hit;
+
+        rb.GetContacts(contacts);
+        foreach (ContactPoint2D cp2d in contacts)
+        {
+            if (cp2d.collider.tag == "Floor")
+            {
+                floorpoint = cp2d.point;
+            }
+        }
+
         if (!gb.useGravity)
         {
 
@@ -139,14 +151,14 @@ public class Jump : MonoBehaviour
         }
         else
         {   
-             hit = Physics2D.Raycast(transform.position, v * -1, 0.265f, 1 << 6);
+             hit = Physics2D.Raycast(transform.position, floorpoint - GetV2(rb), 0.265f, 1 << 6);
             RecalculateJump(g);
             jumpForce = 0.62f;
             f = 0;
             cl.speed = 12;
         }
-        
-        Debug.DrawRay(transform.position, v.normalized * -1, Color.red);
+
+        Debug.DrawRay(transform.position, (floorpoint - GetV2(rb)).normalized, Color.red);
         if(hit){
             //Debug.Log(hit.collider.name);
             if(hit.collider.tag == "Floor" || hit.collider.tag == "Planet" || hit.collider.tag == "Semi")

@@ -3744,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6089686496621900265, guid: 8f559c9675f5c824192d7f4f27f1ddb5, type: 3}
       propertyPath: nextLevel
-      value: Triangle1s9
+      value: Square2s1
       objectReference: {fileID: 0}
     - target: {fileID: 6089686496621900279, guid: 8f559c9675f5c824192d7f4f27f1ddb5, type: 3}
       propertyPath: m_Name
