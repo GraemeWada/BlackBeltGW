@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.51550007, y: 8.5, z: -51.479}
   m_LocalScale: {x: 1.0368267, y: 0.5056, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6089686497179124860}
   m_RootOrder: 0
@@ -47,10 +48,11 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6089686496242803918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -111,6 +113,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.51550007, y: 9.22, z: -51.479}
   m_LocalScale: {x: 1.0368267, y: 0.5056, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6089686497179124860}
   m_RootOrder: 2
@@ -132,8 +135,9 @@ MeshRenderer:
   m_GameObject: {fileID: 6089686496621900279}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -181,6 +185,7 @@ MonoBehaviour:
   moved: 0
   usedRed: {fileID: 2100000, guid: 2abcab354e5c41d4b8bfd993c3a46710, type: 2}
   nextLevel: 
+  h: {fileID: 0}
 --- !u!61 &6089686496621900266
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -233,6 +238,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.226252, y: -7.26156, z: 59.08338}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6089686496242803919}
   - {fileID: 6089686497529311732}
@@ -269,6 +275,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5155, y: 8.9272, z: -51.48}
   m_LocalScale: {x: 1.409, y: 0.5056, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6089686497179124860}
   m_RootOrder: 1
@@ -290,8 +297,9 @@ MeshRenderer:
   m_GameObject: {fileID: 6089686497529311731}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

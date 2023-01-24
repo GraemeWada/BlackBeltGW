@@ -39,6 +39,7 @@ public class Jump : MonoBehaviour
     public bool j;
     public float pfm;
     public float rTime;
+    Vector3 v3;
 
     void Start()
     {
@@ -56,27 +57,99 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("s") && !downPressed)
+        RaycastHit2D hit;
+
+        if (!gb.useGravity)
         {
-            if (!isGrounded)
+
+            hit = Physics2D.Raycast(transform.position, v * -1, 0.35f, 1 << 6);
+            rb.GetContacts(contacts);
+            foreach (ContactPoint2D cp2d in contacts)
             {
-                rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
-                downPressed = true;
+                if (cp2d.collider.tag == "Planet")
+                {
+                    planet = cp2d;
+                }
             }
-            else if (s)
+
+
+
+            if (Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)) > 0.5f)
             {
-                sObject.GetComponent<PlatformEffector2D>().surfaceArc = 0;
-                s = false;
-                Invoke("ResetSemi", rTime);
+                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass * 1.75f, 2)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
+            }
+            else
+            {
+                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass, 2)) / 0.125f);
+            }
+            v = gb.pv.normalized * 9.81f;
+
+
+            f = gb.currentAttractor.attGravity * ((gb.currentAttractor.attMass) / 0.0625f);
+            cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 2) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
+        }
+        else
+        {
+            hit = Physics2D.Raycast(transform.position, floorpoint - GetV2(rb), 0.57f, 1 << 6);
+            RecalculateJump(g);
+            jumpForce = 0.62f;
+            f = 0;
+            cl.speed = 12;
+        }
+
+        Debug.DrawRay(transform.position, (floorpoint - GetV2(rb)).normalized * 0.57f, Color.red);
+        if (hit)
+        {
+            //Debug.Log(hit.collider.name);
+            if (hit.collider.tag == "Floor" || hit.collider.tag == "Planet" || hit.collider.tag == "Semi")
+            {
+                isGrounded = true;
+                t = false;
+                swj = false;
+                doubleJump = false;
+                downPressed = false;
+                if (hit.collider.tag == "Semi")
+                {
+                    sObject = hit.collider.gameObject;
+                    s = true;
+                }
             }
         }
-        if(isGrounded){
+        else
+        {
+            isGrounded = false;
+            s = false;
+        }
+
+        
+    }
+
+    public Vector2 GetV2(Rigidbody2D rb)
+    {
+        return new Vector2(rb.transform.position.x, rb.transform.position.y);
+    }
+
+    void FixedUpdate(){
+        rb.GetContacts(contacts);
+        foreach (ContactPoint2D cp2d in contacts)
+        {
+            if (cp2d.collider.tag == "Floor" || cp2d.collider.tag == "Semi")
+            {
+                floorpoint = cp2d.point;
+                v3 = floorpoint;
+            }
+        }
+
+        if (isGrounded)
+        {
             d = false;
             doubleJump = false;
             swj = false;
             downPressed = false;
         }
+
         if(!isGrounded && !d){d = true; doubleJump = true;}
+
         if(j){
             j=false;
                 rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
@@ -100,87 +173,6 @@ public class Jump : MonoBehaviour
         {
             rb.gravityScale = 1;
         }
-    }
-
-    public Vector2 GetV2(Rigidbody2D rb)
-    {
-        return new Vector2(rb.transform.position.x, rb.transform.position.y);
-    }
-
-    void FixedUpdate(){
-
-        RaycastHit2D hit;
-
-        rb.GetContacts(contacts);
-        foreach (ContactPoint2D cp2d in contacts)
-        {
-            if (cp2d.collider.tag == "Floor")
-            {
-                floorpoint = cp2d.point;
-            }
-        }
-
-        if (!gb.useGravity)
-        {
-
-            hit = Physics2D.Raycast(transform.position, v * -1, 0.35f, 1 << 6);
-            rb.GetContacts(contacts);
-            foreach (ContactPoint2D cp2d in contacts)
-            {
-                if(cp2d.collider.tag == "Planet")
-                {
-                    planet = cp2d;
-                }
-            }
-
-
-
-            if (Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)) > 0.5f)
-            {
-                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass * 1.75f, 2)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
-            }
-            else
-            {
-                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass, 2)) / 0.125f);
-            }
-            v = gb.pv.normalized * 9.81f;
-             
-
-            f = gb.currentAttractor.attGravity * ((gb.currentAttractor.attMass) / 0.0625f);
-            cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3)/2) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
-        }
-        else
-        {   
-             hit = Physics2D.Raycast(transform.position, floorpoint - GetV2(rb), 0.265f, 1 << 6);
-            RecalculateJump(g);
-            jumpForce = 0.62f;
-            f = 0;
-            cl.speed = 12;
-        }
-
-        Debug.DrawRay(transform.position, (floorpoint - GetV2(rb)).normalized, Color.red);
-        if(hit){
-            //Debug.Log(hit.collider.name);
-            if(hit.collider.tag == "Floor" || hit.collider.tag == "Planet" || hit.collider.tag == "Semi")
-            {
-                isGrounded = true;
-                t = false;
-                swj = false;
-                doubleJump = false;
-                downPressed = false;
-                if(hit.collider.tag == "Semi")
-                {
-                    sObject = hit.collider.gameObject;
-                    s = true;
-                }
-            }
-        }
-        else{
-            isGrounded = false;
-            s = false;
-        }
-
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -258,5 +250,25 @@ public class Jump : MonoBehaviour
                 swj = false;
             }
         }
+        if (Input.GetKeyDown("s") && !downPressed)
+        {
+            if (!isGrounded)
+            {
+                rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
+                downPressed = true;
+            }
+            else if (s)
+            {
+                sObject.GetComponent<PlatformEffector2D>().surfaceArc = 0;
+                s = false;
+                Invoke("ResetSemi", rTime);
+            }
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f,1f,.2f);
+        Gizmos.DrawSphere(v3, 0.2f);
     }
 }

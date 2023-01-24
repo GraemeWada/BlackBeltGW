@@ -213,18 +213,18 @@ public class Pendulum : MonoBehaviour
 		Gizmos.DrawSphere(this.Bob.transform.position + resultant, .2f);
 
 
-		/* * /
+
 		// Green: Pendulum side direction
 		Gizmos.color = new Color(.3f, 1f, .3f);
 		Gizmos.DrawRay(this.Bob.transform.position, 3f*this.pendulumSideDirection);
 		Gizmos.DrawSphere(this.Bob.transform.position + 3f*this.pendulumSideDirection, .2f);
-		/* */
 
-		/* * /
+
+
 		// Cyan: tangent direction
 		Gizmos.color = new Color(.2f, 1f, 1f); // cyan
 		Gizmos.DrawRay(this.Bob.transform.position, 3f*this.tangentDirection);
 		Gizmos.DrawSphere(this.Bob.transform.position + 3f*this.tangentDirection, .2f);
-		/* */
+
 	}
 }

@@ -20,8 +20,6 @@ public class Controls : MonoBehaviour
 
     public GravityBody gB;
 
-    //1 left, 0 stationary, -1 right
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,30 +30,23 @@ public class Controls : MonoBehaviour
         RecalculateControls(g);
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-
-        v = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(rb.velocity.x), 2) + Mathf.Pow(Mathf.Abs(rb.velocity.y), 2));
-        //float h = Input.GetAxis("Horizontal");
-
         if (Input.GetAxis("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && gB.useGravity)
         {
             rb.AddForce(LeftV * speed * 1.3f * Time.deltaTime, ForceMode2D.Impulse);
-            //rb.AddForce(Vector2.left * speed* Time.deltaTime, ForceMode2D.Impulse);
-            //Debug.Log(v);
             //Left
         }
         else if (Input.GetAxis("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && !gB.useGravity){
             rb.AddForce(LeftV * speed * Time.deltaTime, ForceMode2D.Impulse);
         }
+        
         if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
         {
             rb.AddForce(RightV * speed * Time.deltaTime, ForceMode2D.Impulse);
-            //rb.AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Impulse);
-            //Debug.Log(v);
             //Right
         }
+
         if (g != null)
         {
             if (g.GCCounter != temp)
@@ -69,14 +60,13 @@ public class Controls : MonoBehaviour
             }
         }
         //Debug.Log(v);
-        //rb.AddForce(new Vector3(x, 0, 0), ForceMode2D.Impulse);
     }
 
     void FixedUpdate()
     {
+        v = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(rb.velocity.x), 2) + Mathf.Pow(Mathf.Abs(rb.velocity.y), 2));
         if (!gB.useGravity)
         {
-            //speedcap = 6;
             LeftV.x = gB.pv.normalized.y * -1;
             LeftV.y = gB.pv.normalized.x;
             RightV.x = gB.pv.normalized.y;
