@@ -42,6 +42,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Square2s1.unity
     guid: 38015f33b9b6002489c0ac584cb734d9
   - enabled: 1
+    path: Assets/Scenes/Square2s2.unity
+    guid: 45d3b03a51e184045a2f81d38ae83d19
+  - enabled: 1
     path: Assets/Scenes/nLevel110.unity
     guid: a33850a1c39adc14ba70778057b32193
   - enabled: 1

@@ -270,5 +270,12 @@ public class Jump : MonoBehaviour
     {
         Gizmos.color = new Color(1f,1f,.2f);
         Gizmos.DrawSphere(v3, 0.2f);
+
+        if(!gb.useGravity){
+            Vector3 v_129724 = new Vector3(0,0,0);
+            v_129724 = planet.point;
+            Gizmos.color = new Color(0f,1f,0f);
+            Gizmos.DrawSphere(v_129724, 0.2f);
+        }
     }
 }
