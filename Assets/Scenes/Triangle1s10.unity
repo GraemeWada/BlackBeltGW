@@ -795,7 +795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2585116206350511472, guid: 89602f145d46c4a4fb67979ecfb591b2, type: 3}
       propertyPath: target.y
-      value: 63.24
+      value: 61.97
       objectReference: {fileID: 0}
     - target: {fileID: 3553981742950375026, guid: 89602f145d46c4a4fb67979ecfb591b2, type: 3}
       propertyPath: m_Size.y
@@ -948,6 +948,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1380183705}
     m_Modifications:
+    - target: {fileID: 8781639879853454385, guid: 10aad56c08c86cf47ac0c08a48a389ba, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781639879853454387, guid: 10aad56c08c86cf47ac0c08a48a389ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781639879853454387, guid: 10aad56c08c86cf47ac0c08a48a389ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8781639880223977670, guid: 10aad56c08c86cf47ac0c08a48a389ba, type: 3}
       propertyPath: m_Name
       value: Door
@@ -1520,7 +1532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.075292, y: -19.729317, z: -11}
+  m_LocalPosition: {x: -5.075292, y: -19.729357, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

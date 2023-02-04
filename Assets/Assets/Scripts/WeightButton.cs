@@ -7,15 +7,22 @@ public class WeightButton : MonoBehaviour
     public Vector3 target;
     public Vector3 startpos;
 
+    //not to be confused with weight...
     public int buttonWeight;
 
     public bool pressed;
+
+    public bool smoothdamp = false;
+    public float sdtime;
+    Vector3 v_2347897 = Vector3.zero;
 
     public RaycastHit2D[] hit;
 
     private List<Collider2D> tList = new List<Collider2D>();
     private List<int> weights = new List<int>();
     private List<int> ids = new List<int>();
+
+    //Stays 0
     public int weight;
 
     // Start is called before the first frame update
@@ -98,11 +105,25 @@ public class WeightButton : MonoBehaviour
     {
         if (p)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime);
+            if (!smoothdamp)
+            {
+                transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime);
+            }
+            else
+            {
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, target, ref v_2347897, sdtime);
+            }
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, startpos, Time.deltaTime);
+            if (!smoothdamp)
+            {
+                transform.localPosition = Vector3.Lerp(transform.localPosition, startpos, Time.deltaTime);
+            }
+            else
+            {
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, startpos, ref v_2347897, sdtime);
+            }
         }
     }
 }

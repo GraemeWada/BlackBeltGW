@@ -8,11 +8,18 @@ public class WBl9b1 : MonoBehaviour
     public GameObject o;
     public Vector3 start;
     public Vector3 target;
+
+    //use door target obj
+    public bool asjkfhiuq2hht23icn2394823m98u98rtuctm983u984u289u8 = false;
     // Start is called before the first frame update
     void Start()
     {
         wb = this.GetComponentInParent<WeightButton>();
         start = o.transform.localPosition;
+        if (asjkfhiuq2hht23icn2394823m98u98rtuctm983u984u289u8)
+        {
+            target = o.GetComponent<Door>().target;
+        }
     }
 
     // Update is called once per frame

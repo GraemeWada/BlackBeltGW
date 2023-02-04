@@ -7,6 +7,7 @@ public class Swidge : MonoBehaviour
     public GameObject door;
     public Vector3 doorTarget;
     public bool a = false;
+    public bool useTargetFromComponent = true;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -17,6 +18,13 @@ public class Swidge : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if (useTargetFromComponent)
+        {
+            doorTarget = door.GetComponent<Door>().target;
+        }
+    }
     void Update()
     {
         if(a)
