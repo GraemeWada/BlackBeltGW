@@ -12,8 +12,6 @@ public class WeightButton : MonoBehaviour
 
     public bool pressed;
 
-    public bool smoothdamp = false;
-    public float sdtime;
     Vector3 v_2347897 = Vector3.zero;
 
     public RaycastHit2D[] hit;
@@ -105,25 +103,11 @@ public class WeightButton : MonoBehaviour
     {
         if (p)
         {
-            if (!smoothdamp)
-            {
-                transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime);
-            }
-            else
-            {
-                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, target, ref v_2347897, sdtime);
-            }
+            transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime);
         }
         else
         {
-            if (!smoothdamp)
-            {
-                transform.localPosition = Vector3.Lerp(transform.localPosition, startpos, Time.deltaTime);
-            }
-            else
-            {
-                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, startpos, ref v_2347897, sdtime);
-            }
+            transform.localPosition = Vector3.Lerp(transform.localPosition, startpos, Time.deltaTime);
         }
     }
 }

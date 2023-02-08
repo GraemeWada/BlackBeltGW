@@ -5,11 +5,13 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public GameObject a;
+    public GameObject b;
     public Vector3 target;
     // Start is called before the first frame update
     void Start()
     {
-        target = a.transform.position;
+        //a(target) rel to b(d&s)
+        target = b.transform.InverseTransformPoint(a.transform.position);
     }
 
     // Update is called once per frame
