@@ -2346,13 +2346,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeightButton
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2585116206350511472, guid: 89602f145d46c4a4fb67979ecfb591b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89602f145d46c4a4fb67979ecfb591b2, type: 3}
 --- !u!4 &1590871064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4994745862061413833, guid: 89602f145d46c4a4fb67979ecfb591b2, type: 3}
   m_PrefabInstance: {fileID: 1590871063}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1590871065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4994745860441710658, guid: 89602f145d46c4a4fb67979ecfb591b2, type: 3}
+  m_PrefabInstance: {fileID: 1590871063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1590871066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590871065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f16ef6f5a060340a7fc030bccf74cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wb: {fileID: 0}
+  o: {fileID: 1711661495}
+  start: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
+  sdtime: 3
+  asjkfhiuq2hht23icn2394823m98u98rtuctm983u984u289u8: 1
 --- !u!1001 &1602789507
 PrefabInstance:
   m_ObjectHideFlags: 0
