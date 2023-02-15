@@ -80,13 +80,13 @@ public class Jump : MonoBehaviour
             }
             else
             {
-                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass, 2)) / 0.125f);
+                jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass, 2)) / 0.175f);
             }
             v = gb.pv.normalized * 9.81f;
 
 
             f = gb.currentAttractor.attGravity * ((gb.currentAttractor.attMass) / 0.0625f);
-            cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 2) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
+            cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 3.5f) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
         }
         else
         {

@@ -20,10 +20,7 @@ public class WBl9b1 : MonoBehaviour
     {
         wb = this.GetComponentInParent<WeightButton>();
         start = o.transform.localPosition;
-        if (asjkfhiuq2hht23icn2394823m98u98rtuctm983u984u289u8)
-        {
-            target = o.GetComponent<Door>().target;
-        }
+        
     }
 
     // Update is called once per frame
@@ -36,6 +33,10 @@ public class WBl9b1 : MonoBehaviour
         else
         {
             o.transform.localPosition = Vector3.SmoothDamp(o.transform.localPosition, start, ref v_481274, sdtime);
+        }
+        if (asjkfhiuq2hht23icn2394823m98u98rtuctm983u984u289u8)
+        {
+            target = o.GetComponent<Door>().target;
         }
     }
 }

@@ -20,16 +20,16 @@ public class Swidge : MonoBehaviour
 
     void Start()
     {
-        if (useTargetFromComponent)
-        {
-            doorTarget = door.GetComponent<Door>().target;
-        }
     }
     void Update()
     {
         if(a)
         {
-            door.transform.position = Vector3.Lerp(door.transform.position, doorTarget, Time.deltaTime);
+            door.transform.localPosition = Vector3.Lerp(door.transform.localPosition, doorTarget, Time.deltaTime);
+        }
+        if (useTargetFromComponent)
+        {
+            doorTarget = door.GetComponent<Door>().target;
         }
     }
 }

@@ -34,7 +34,7 @@ public class WeightButton : MonoBehaviour
     void Update()
     {
         Move(pressed);
-        hit = Physics2D.RaycastAll(transform.position, Vector2.up, 1.0f);
+        hit = Physics2D.RaycastAll(transform.position, Physics2D.gravity * -1, 1.0f);
         Debug.DrawRay(transform.position, Vector2.up, Color.red);
         foreach (RaycastHit2D i in hit)
         {

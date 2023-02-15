@@ -11,6 +11,7 @@ public class GravitySwitch : MonoBehaviour
     public bool test;
     public int temp;
     public GameObject[] box;
+    public float rotation = 120.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +70,7 @@ public class GravitySwitch : MonoBehaviour
             box[temp].tag = "Untagged";
             box[GCCounter].tag = "Floor";
             Physics2D.gravity = v[GCCounter];
-            transform.Rotate(0.0f, 0.0f, 120.0f, Space.Self);
+            transform.Rotate(0.0f, 0.0f, rotation, Space.Self);
         }
     }
 }
