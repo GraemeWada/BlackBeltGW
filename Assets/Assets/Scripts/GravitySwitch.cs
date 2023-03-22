@@ -43,7 +43,7 @@ public class GravitySwitch : MonoBehaviour
             box[temp].tag = "Untagged";
             box[GCCounter].tag = "Floor";
             Physics2D.gravity = v[GCCounter];
-            transform.Rotate(0.0f, 0.0f, 120.0f, Space.Self);
+            transform.Rotate(0.0f, 0.0f, rotation, Space.Self);
         }
     }
 
