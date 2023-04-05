@@ -12,6 +12,9 @@ public class WeightButton : MonoBehaviour
 
     public bool pressed;
 
+    public bool useAlternateRaycastDirection = false;
+    public Vector2 direction;
+
     Vector3 v_2347897 = Vector3.zero;
 
     public RaycastHit2D[] hit;
@@ -34,7 +37,13 @@ public class WeightButton : MonoBehaviour
     void Update()
     {
         Move(pressed);
-        hit = Physics2D.RaycastAll(transform.position, Physics2D.gravity * -1, 1.0f);
+        if(!useAlternateRaycastDirection){
+            hit = Physics2D.RaycastAll(transform.position, Physics2D.gravity * -1, 1.0f);
+        }
+        else if (useAlternateRaycastDirection){
+            hit = Physics2D.RaycastAll(transform.position, direction, 1.0f);
+        }
+        
         Debug.DrawRay(transform.position, Vector2.up, Color.red);
         foreach (RaycastHit2D i in hit)
         {
