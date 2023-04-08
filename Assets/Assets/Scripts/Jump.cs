@@ -18,6 +18,7 @@ public class Jump : MonoBehaviour
 
     public bool s;
     public GameObject sObject;
+    public bool canUseSemi = true;
 
     public GravityBody gb;
 
@@ -43,6 +44,7 @@ public class Jump : MonoBehaviour
 
     void Start()
     {
+        canUseSemi = true;
         swj = false;
         if(g != null)
         {
@@ -54,6 +56,8 @@ public class Jump : MonoBehaviour
         }
         gb = this.GetComponentInParent<GravityBody>();
     }
+
+//i greatly regret my disorganization
 
     void Update()
     {
@@ -108,7 +112,7 @@ public class Jump : MonoBehaviour
                 swj = false;
                 doubleJump = false;
                 downPressed = false;
-                if (hit.collider.tag == "Semi")
+                if (hit.collider.tag == "Semi" && canUseSemi)
                 {
                     sObject = hit.collider.gameObject;
                     s = true;
@@ -227,6 +231,7 @@ public class Jump : MonoBehaviour
     void ResetSemi()
     {
         sObject.GetComponent<PlatformEffector2D>().surfaceArc = 90;
+        print("RESETSEMI");
     }
 
     void LateUpdate()
@@ -257,11 +262,13 @@ public class Jump : MonoBehaviour
                 rb.AddForce(v * downSpeed * -1, ForceMode2D.Impulse);
                 downPressed = true;
             }
-            else if (s)
+            else if (s && canUseSemi)
             {
                 sObject.GetComponent<PlatformEffector2D>().surfaceArc = 0;
                 s = false;
+                canUseSemi = false;
                 Invoke("ResetSemi", rTime);
+                Invoke("CanSemi", rTime + 0.1f);
             }
         }
     }
@@ -277,5 +284,9 @@ public class Jump : MonoBehaviour
             Gizmos.color = new Color(0f,1f,0f);
             Gizmos.DrawSphere(v_129724, 0.2f);
         }
+    }
+
+    void CanSemi(){
+        canUseSemi = true;
     }
 }

@@ -32,16 +32,16 @@ public class Controls : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Input.GetAxis("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && gB.useGravity)
+        if (Input.GetAxisRaw("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && gB.useGravity)
         {
             rb.AddForce(LeftV * speed * 1.3f * Time.deltaTime, ForceMode2D.Impulse);
             //Left
         }
-        else if (Input.GetAxis("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && !gB.useGravity){
+        else if (Input.GetAxisRaw("Horizontal") < 0 && Mathf.Abs(v) < Mathf.Abs(speedcap) && !gB.useGravity){
             rb.AddForce(LeftV * speed * Time.deltaTime, ForceMode2D.Impulse);
         }
         
-        if (Input.GetAxis("Horizontal") > 0 && v < speedcap)
+        if (Input.GetAxisRaw("Horizontal") > 0 && v < speedcap)
         {
             rb.AddForce(RightV * speed * Time.deltaTime, ForceMode2D.Impulse);
             //Right
