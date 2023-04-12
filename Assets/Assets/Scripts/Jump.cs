@@ -41,6 +41,7 @@ public class Jump : MonoBehaviour
     public float pfm;
     public float rTime;
     Vector3 v3;
+    public bool useDynamicFloorRaycast = true;
 
     void Start()
     {
@@ -94,7 +95,7 @@ public class Jump : MonoBehaviour
         }
         else
         {
-            hit = Physics2D.Raycast(transform.position, floorpoint - GetV2(rb), 0.57f, 1 << 6);
+            if(useDynamicFloorRaycast){hit = Physics2D.Raycast(transform.position, floorpoint - GetV2(rb), 0.57f, 1 << 6);}else{hit = Physics2D.Raycast(transform.position, Vector2.down, 0.35f, 1 << 6);}
             RecalculateJump(g);
             jumpForce = 0.62f;
             f = 0;
@@ -139,6 +140,8 @@ public class Jump : MonoBehaviour
         {
             if (cp2d.collider.tag == "Floor" || cp2d.collider.tag == "Semi")
             {
+                Debug.Log(cp2d.collider.name);
+                print(rb.GetContacts(contacts));
                 floorpoint = cp2d.point;
                 v3 = floorpoint;
             }

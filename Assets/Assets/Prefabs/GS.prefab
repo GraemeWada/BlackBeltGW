@@ -137,3 +137,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  rotation: 120
+  useSwitchButton: 0
+  CanSwitchGravity: 0
