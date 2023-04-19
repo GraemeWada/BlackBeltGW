@@ -82,27 +82,37 @@ public class Jump : MonoBehaviour
             if (Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)) > 0.5f)
             {
                 jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass * 1.75f, 2)) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
+                cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 3.5f) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
             }
             else
             {
                 jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass, 2)) / 0.175f);
+                cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 3.5f) / 0.085f);
             }
             v = gb.pv.normalized * 9.81f;
 
 
             f = gb.currentAttractor.attGravity * ((gb.currentAttractor.attMass) / 0.0625f);
-            cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 3.5f) / Mathf.Pow(Vector2.Distance(gb.currentAttractor.FindNearestPointOnSurface(rb), GetV2(rb)), 2));
-        }
+            }
         else
         {
-            if(useDynamicFloorRaycast){hit = Physics2D.Raycast(transform.position, floorpoint - GetV2(rb), 0.57f, 1 << 6);}else{hit = Physics2D.Raycast(transform.position, Vector2.down, 0.35f, 1 << 6);}
+            if(useDynamicFloorRaycast)
+            {
+                hit = Physics2D.Raycast(transform.position, floorpoint - GetV2(rb), 0.57f, 1 << 6);
+                Debug.DrawRay(transform.position, (floorpoint - GetV2(rb)).normalized * 0.57f, Color.red);
+                }
+                else
+                {
+                    hit = Physics2D.Raycast(transform.position, Vector2.down, 0.57f, 1 << 6);
+                    Debug.DrawRay(transform.position, (Vector2.down).normalized * 0.57f, Color.red);
+                    }
             RecalculateJump(g);
             jumpForce = 0.62f;
             f = 0;
             cl.speed = 12;
         }
 
-        Debug.DrawRay(transform.position, (floorpoint - GetV2(rb)).normalized * 0.57f, Color.red);
+        
         if (hit)
         {
             //Debug.Log(hit.collider.name);
@@ -141,7 +151,7 @@ public class Jump : MonoBehaviour
             if (cp2d.collider.tag == "Floor" || cp2d.collider.tag == "Semi")
             {
                 Debug.Log(cp2d.collider.name);
-                print(rb.GetContacts(contacts));
+                //print(rb.GetContacts(contacts));
                 floorpoint = cp2d.point;
                 v3 = floorpoint;
             }
