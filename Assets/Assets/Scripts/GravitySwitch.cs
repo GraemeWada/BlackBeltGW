@@ -13,6 +13,8 @@ public class GravitySwitch : MonoBehaviour
     public GameObject[] box;
     public float rotation = 120.0f;
 
+    public Transform t;
+
     public bool useSwitchButton = false;
     public bool CanSwitchGravity;
     // Start is called before the first frame update
@@ -20,6 +22,7 @@ public class GravitySwitch : MonoBehaviour
     {
         GCCounter = 0;
         CanSwitchGravity = true;
+        t=this.GetComponentInParent<Transform>();
     }
 
     // Update is called once per frame
@@ -57,6 +60,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(225,t);
             }
             if(Input.GetKeyDown(KeyCode.T) && CanSwitchGravity){
                 CanSwitchGravity = false;
@@ -65,6 +69,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(180,t);
             }
             if(Input.GetKeyDown(KeyCode.Y) && CanSwitchGravity){
                 CanSwitchGravity = false;
@@ -73,6 +78,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];                
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(135,t);
             }
             if(Input.GetKeyDown(KeyCode.F) && CanSwitchGravity){
                 CanSwitchGravity = false;
@@ -81,6 +87,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];                
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(270,t);
             }
             if(Input.GetKeyDown(KeyCode.H) && CanSwitchGravity){
                 CanSwitchGravity = false;
@@ -89,6 +96,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];                
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(90,t);
             }
             if(Input.GetKeyDown(KeyCode.N) && CanSwitchGravity){
                 CanSwitchGravity = false;
@@ -97,6 +105,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];                
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(45,t);
             }
             if(Input.GetKeyDown(KeyCode.V) && CanSwitchGravity){
                 CanSwitchGravity = false;
@@ -105,6 +114,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];                
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(315,t);
             }
             if(Input.GetKeyDown(KeyCode.B) && CanSwitchGravity){
                 CanSwitchGravity = false;
@@ -113,6 +123,7 @@ public class GravitySwitch : MonoBehaviour
                 box[GCCounter].tag = "Floor";
                 Physics2D.gravity = v[GCCounter];                
                 Invoke("SwitchGravity", 1.0f);
+                RotateToAngle(0,t);
             }
         }
     }
@@ -146,5 +157,10 @@ public class GravitySwitch : MonoBehaviour
 
     void SwitchGravity(){
         CanSwitchGravity = true;
+    }
+
+    void RotateToAngle(int angle, Transform t){
+        t.rotation = new Quaternion(0f,0f,0f,0f);
+        t.rotation = Quaternion.Euler(0f, 0f, (float)angle);
     }
 }

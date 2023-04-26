@@ -87,7 +87,7 @@ public class Jump : MonoBehaviour
             else
             {
                 jumpForce = Mathf.Abs((rb.mass * gb.pf / Mathf.Pow(gb.currentAttractor.attMass, 2)) / 0.175f);
-                cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 3.5f) / 0.085f);
+                cl.speed = Mathf.Abs((Mathf.Pow(2 * Mathf.PI * gb.currentAttractor.colRad, 3) / 3.5f) / 0.04f);
             }
             v = gb.pv.normalized * 9.81f;
 
@@ -103,7 +103,13 @@ public class Jump : MonoBehaviour
                 }
                 else
                 {
-                    hit = Physics2D.Raycast(transform.position, Vector2.down, 0.57f, 1 << 6);
+                    if(Physics2D.gravity != new Vector2(0, -9.81f)){
+                        hit = Physics2D.Raycast(transform.position, Physics2D.gravity, 0.57f, 1 << 6);
+                    }
+                    else{
+                        hit = Physics2D.Raycast(transform.position, Vector2.down, 0.57f, 1 << 6);
+                    }
+                    
                     Debug.DrawRay(transform.position, (Vector2.down).normalized * 0.57f, Color.red);
                     }
             RecalculateJump(g);

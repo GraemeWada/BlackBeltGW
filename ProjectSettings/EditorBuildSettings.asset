@@ -99,6 +99,60 @@ EditorBuildSettings:
     path: Assets/Assets/Scenes/Pent3s10.unity
     guid: d698e90d066721046843074f3e149df0
   - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s1.unity
+    guid: 13c209210ce810d44bfca6a0e1c8f42d
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s2.unity
+    guid: 28a4ea25637cb54468c6485df6a85d0d
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s3.unity
+    guid: d21258a1f5e7bea428c1bc8341fa652b
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s4.unity
+    guid: 7a1363d98db5c5147b31eb269217cb49
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s5.unity
+    guid: 763384c31af848b4f90e7d5a6df50b21
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s6.unity
+    guid: bc237fc5b0f068c408b6371f67ddc2e7
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s7.unity
+    guid: 405bd84fc5bf78349a06b510c1d76f9c
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s8.unity
+    guid: d79b172a7833d914095650ecf504a154
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s9.unity
+    guid: e1cd4a57fd59f4e43bc7d7965b111fdf
+  - enabled: 1
+    path: Assets/Assets/Scenes/Hex4s10.unity
+    guid: 9e186d703ea8e2d4899b36695c0c6e07
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s1.unity
+    guid: c9051674e6b9ea04682ebd22b6e98569
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s2.unity
+    guid: 943deb908239c1e4092ae57c011972ce
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s3.unity
+    guid: 55606fd376937f84090471f087038971
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s4.unity
+    guid: 4f838e61d9d000247b547c351be79974
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s5.unity
+    guid: eac5e513699529b428da2bbe6ce66740
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s6.unity
+    guid: 057e1fa8a38c3de4f8e52167537b1dea
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s7.unity
+    guid: 15b4e9cbc42e3904c88c3b352af7da40
+  - enabled: 1
+    path: Assets/Assets/Scenes/Oct5s8.unity
+    guid: 88754bd905378d14091c9dffea72979e
+  - enabled: 1
     path: Assets/Assets/Scenes/nLevel110.unity
     guid: a33850a1c39adc14ba70778057b32193
   - enabled: 1
