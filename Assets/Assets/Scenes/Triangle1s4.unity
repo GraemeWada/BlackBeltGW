@@ -1014,7 +1014,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.015082359, y: 0.20145273, z: -8.557847}
+  m_LocalPosition: {x: -0.015084267, y: 0.20145655, z: -8.557847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1163,7 +1163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7864500027138699323, guid: 59d676f4ad04e6e4e8dc58ade320d431, type: 3}
       propertyPath: doorTarget.z
-      value: 8.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7864500027138699323, guid: 59d676f4ad04e6e4e8dc58ade320d431, type: 3}
       propertyPath: useTargetFromComponent
