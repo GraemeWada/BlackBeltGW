@@ -156,7 +156,7 @@ public class Jump : MonoBehaviour
         {
             if (cp2d.collider.tag == "Floor" || cp2d.collider.tag == "Semi")
             {
-                Debug.Log(cp2d.collider.name);
+                //Debug.Log(cp2d.collider.name);
                 //print(rb.GetContacts(contacts));
                 floorpoint = cp2d.point;
                 v3 = floorpoint;

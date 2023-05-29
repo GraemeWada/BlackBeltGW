@@ -17,6 +17,8 @@ public class GravitySwitch : MonoBehaviour
 
     public bool useSwitchButton = false;
     public bool CanSwitchGravity;
+
+    public bool isLevel50;
     // Start is called before the first frame update
     void Start()
     {
@@ -159,7 +161,7 @@ public class GravitySwitch : MonoBehaviour
         CanSwitchGravity = true;
     }
 
-    void RotateToAngle(int angle, Transform t){
+    public void RotateToAngle(int angle, Transform t){
         t.rotation = new Quaternion(0f,0f,0f,0f);
         t.rotation = Quaternion.Euler(0f, 0f, (float)angle);
     }

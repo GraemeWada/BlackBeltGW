@@ -9,6 +9,13 @@ public class TriggerZoneMove : MonoBehaviour
     public Vector3 startingPosition;
     public Vector3 target;
     public bool useTargetFromComponent;
+
+    public GameObject gs;
+    public GravitySwitch g;
+
+    public bool resetgs;
+    public bool moveobj;
+    public int temp;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,20 +28,48 @@ public class TriggerZoneMove : MonoBehaviour
     {
         if (playerHasTriggeredZone)
         {
-            movingObject.transform.localPosition = Vector3.Lerp(movingObject.transform.localPosition, target, Time.deltaTime);
+            if (moveobj)
+            {   
+                if (useTargetFromComponent)
+                {
+                target = movingObject.GetComponent<Door>().target;
+                }
+                movingObject.transform.localPosition = Vector3.Lerp(movingObject.transform.localPosition, target, Time.deltaTime);
+            }
+
+            Invoke("DAT", 5f);
+
+            if (resetgs)
+            {
+                if ((g.GCCounter - 1) < 0)
+                {
+                    temp = g.maxGChanges;
+                }
+                else
+                {
+                    temp = g.GCCounter - 1;
+                }
+                g.GCCounter = 0;
+                g.box[temp].tag = "Untagged";
+                g.box[g.GCCounter].tag = "Floor";
+                Physics2D.gravity = g.v[g.GCCounter];
+                g.RotateToAngle(0, g.t);
+            }
         }
-        if (useTargetFromComponent)
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject.tag == "Player")
         {
-            target = movingObject.GetComponent<Door>().target;
+            playerHasTriggeredZone = true;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D c)
+    void DAT()
     {
-        if(c.gameObject.name == "Player")
-        {
-            playerHasTriggeredZone = true;
-            print("Player entered trigger zone");
-        }
+        Destroy(this.gameObject);
     }
+
 }
