@@ -16,6 +16,8 @@ public class TriggerZoneMove : MonoBehaviour
     public bool resetgs;
     public bool moveobj;
     public int temp;
+
+    private Vector3 vel = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +36,14 @@ public class TriggerZoneMove : MonoBehaviour
                 {
                 target = movingObject.GetComponent<Door>().target;
                 }
-                movingObject.transform.localPosition = Vector3.Lerp(movingObject.transform.localPosition, target, Time.deltaTime);
+                movingObject.transform.localPosition = Vector3.SmoothDamp(movingObject.transform.localPosition, target, ref vel, 15f);
             }
 
-            Invoke("DAT", 5f);
+            
 
             if (resetgs)
             {
+                Invoke("DAT", 5f);
                 if ((g.GCCounter - 1) < 0)
                 {
                     temp = g.maxGChanges;
