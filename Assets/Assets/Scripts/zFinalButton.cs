@@ -18,10 +18,21 @@ public class zFinalButton : MonoBehaviour
     public GameObject finalDoor;
     public Vector3 fdt;
 
+    public GameObject f3s;
+    public Vector3 t1 = new Vector3(175,0,0);
+    public GameObject finalsection;
+    public Vector3 t2 = new Vector3(-100,0,0);
+    public GameObject lave;
+    public bool booleans2;
+
+    public Vector3 vzero = Vector3.zero;
+    public Vector3 vzero1 = Vector3.zero;
+
     // Start is called before the first frame update
     void Start()
     {
         h = GameObject.Find("Player(9)").GetComponent<Hazard>();
+        booleans2 = false;
     }
     // Update is called once per frame
     void Update()
@@ -35,7 +46,10 @@ public class zFinalButton : MonoBehaviour
                 a = true;
                 Invoke("F", 0.5f);
             }
+            f3s.transform.localPosition = Vector3.SmoothDamp(f3s.transform.localPosition, t1, ref vzero, 10f);
+            lave.SetActive(true);
         }
+        if(moved){finalsection.transform.localPosition = Vector3.SmoothDamp(finalsection.transform.localPosition, t2, ref vzero1, 10f);}
     }
 
     void OnCollisionEnter2D(Collision2D player)

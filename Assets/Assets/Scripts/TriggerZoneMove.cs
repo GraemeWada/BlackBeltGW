@@ -36,7 +36,7 @@ public class TriggerZoneMove : MonoBehaviour
                 {
                 target = movingObject.GetComponent<Door>().target;
                 }
-                movingObject.transform.localPosition = Vector3.SmoothDamp(movingObject.transform.localPosition, target, ref vel, 15f);
+                movingObject.transform.localPosition = Vector3.SmoothDamp(movingObject.transform.localPosition, target, ref vel, 10f);
             }
 
             

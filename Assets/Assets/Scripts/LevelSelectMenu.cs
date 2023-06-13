@@ -11,6 +11,11 @@ public class LevelSelectMenu : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
+    public void MM()
+    {
+        anim.SetTrigger("Click");
+        Invoke("AMM", 1f);
+    }
     public void RBPOne()
     {
         anim.SetTrigger("Click");
@@ -82,6 +87,10 @@ public class LevelSelectMenu : MonoBehaviour
     public void ALBPFive()
     {
         SceneManager.LoadScene("nLevel3140");
+    }
+    public void AMM()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     /*
