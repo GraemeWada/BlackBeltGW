@@ -1823,16 +1823,20 @@ PrefabInstance:
       value: 225.2744
       objectReference: {fileID: 0}
     - target: {fileID: 8938185680746424028, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 242.4939
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938185680746424028, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 212.4104
+      value: 210.89
       objectReference: {fileID: 0}
     - target: {fileID: 8938185680746424028, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 22
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 8938185680746424031, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_Text
-      value: 'Hint: Spin the area with ''Q'', ''2'', and ''E'''
+      value: 'Hint: Spin the area with ''Q'', ''two'', and ''E'''
       objectReference: {fileID: 0}
     - target: {fileID: 8938185680746424031, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1852,7 +1856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8938185681097176817, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8938185681917979548, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_IsActive
@@ -1864,7 +1868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8938185682179481192, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8938185682179481195, guid: ceed5dc187fb4b34eba6520dd64fbf0f, type: 3}
       propertyPath: m_Pivot.x
