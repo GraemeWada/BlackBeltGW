@@ -18,10 +18,13 @@ public class ButtonScript : MonoBehaviour
 
     private bool a;
 
+    private Fade f;
+
     // Start is called before the first frame update
     void Start()
     {
         h = GameObject.Find("Player(9)").GetComponent<Hazard>();
+        f = this.GetComponentInParent<Fade>();
     }
     // Update is called once per frame
     void Update()
@@ -34,6 +37,7 @@ public class ButtonScript : MonoBehaviour
             {
                 a = true;
                 Invoke("F", 0.5f);
+                f.FadeOut();
             }
         }
     }

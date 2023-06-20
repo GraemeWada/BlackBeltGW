@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6089686496621900267}
   - component: {fileID: 6089686496621900265}
   - component: {fileID: 6089686496621900266}
+  - component: {fileID: 4791967328184473684}
   m_Layer: 0
   m_Name: Quad (1)
   m_TagString: Untagged
@@ -212,6 +213,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4791967328184473684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089686496621900279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d14a84af8e0a487395f9a66c8537e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img: {fileID: 0}
 --- !u!1 &6089686497179124859
 GameObject:
   m_ObjectHideFlags: 0
