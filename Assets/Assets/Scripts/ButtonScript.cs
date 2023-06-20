@@ -14,6 +14,8 @@ public class ButtonScript : MonoBehaviour
 
     public string nextLevel;
 
+    public AudioSource buttonSound;
+
     public Hazard h;
 
     private bool a;
@@ -36,6 +38,7 @@ public class ButtonScript : MonoBehaviour
             if (!a)
             {
                 a = true;
+                buttonSound.Play();
                 Invoke("F", 0.5f);
                 f.FadeOut();
             }

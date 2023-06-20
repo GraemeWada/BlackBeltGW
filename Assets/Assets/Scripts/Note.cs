@@ -8,6 +8,8 @@ public class Note: MonoBehaviour {
   public bool inCollision;
   public bool reading;
   public GameObject PM;
+  public AudioSource paperRustle;
+
   private void OnTriggerEnter2D(Collider2D other) {
     if (other.gameObject.tag == "Player") {
       inCollision = true;
@@ -18,6 +20,7 @@ public class Note: MonoBehaviour {
   }
   void Update() {
     if (Input.GetKeyDown(KeyCode.Return) && inCollision) {
+      paperRustle.Play();
       Time.timeScale = 0;
       noteText.SetActive(true);
       reading = true;
@@ -28,6 +31,7 @@ public class Note: MonoBehaviour {
       reading = false;
       noteText.SetActive(false);
       PM.SetActive(true);
+      paperRustle.Play();
     }
   }
   public void OkPressed()
