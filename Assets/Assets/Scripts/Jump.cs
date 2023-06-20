@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
+    public AudioSource jSoundSource;
+
     public Rigidbody2D rb;
 
     public float jumpForce;
@@ -259,17 +261,19 @@ public class Jump : MonoBehaviour
         {
             if (isGrounded)
             {
-
+                jSoundSource.Play();
                 rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
                 t = false;
             }
             if (doubleJump)
             {
+                jSoundSource.Play();
                 rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
                 doubleJump = false;
             }
             if (swj)
             {
+                jSoundSource.Play();
                 rb.AddForce(v * jumpForce * 1.75f, ForceMode2D.Impulse);
                 swj = false;
             }
