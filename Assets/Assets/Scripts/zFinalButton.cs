@@ -25,14 +25,20 @@ public class zFinalButton : MonoBehaviour
     public GameObject lave;
     public bool booleans2;
 
+    public GameObject platforms;
+    public Vector3 t3 = new Vector3(0,0,0);
+    public bool movea;
+
     public Vector3 vzero = Vector3.zero;
     public Vector3 vzero1 = Vector3.zero;
+    public Vector3 vzero2 = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         h = GameObject.Find("Player(9)").GetComponent<Hazard>();
         booleans2 = false;
+        movea = false;
     }
     // Update is called once per frame
     void Update()
@@ -45,11 +51,14 @@ public class zFinalButton : MonoBehaviour
             {
                 a = true;
                 Invoke("F", 0.5f);
+                Invoke("MoveThing", 8f);
+                Invoke("HideThing", 10f);
             }
             f3s.transform.localPosition = Vector3.SmoothDamp(f3s.transform.localPosition, t1, ref vzero, 10f);
             lave.SetActive(true);
         }
         if(moved){finalsection.transform.localPosition = Vector3.SmoothDamp(finalsection.transform.localPosition, t2, ref vzero1, 10f);}
+        if(movea){platforms.transform.localPosition = Vector3.SmoothDamp(platforms.transform.localPosition, t3, ref vzero2, 4f);}
     }
 
     void OnCollisionEnter2D(Collision2D player)
@@ -65,5 +74,14 @@ public class zFinalButton : MonoBehaviour
     {
         PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins")+h.coins));
         Debug.Log(PlayerPrefs.GetInt("Coins"));
+    }
+
+    void MoveThing(){
+        movea = true;
+        platforms.SetActive(true);
+    }
+
+    void HideThing(){
+        f3s.SetActive(false);
     }
 }
