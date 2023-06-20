@@ -6,11 +6,18 @@ using UnityEngine.UI;
 public class Fade : MonoBehaviour
 {
     public Image img;
+
+    public bool endScreen = false;
+    public bool fin = true;
     // Start is called before the first frame update
     void Start()
     {
-        img = GameObject.Find("fadescreen").GetComponent<Image>();
-        FadeIn();
+        if(!endScreen){
+            img = GameObject.Find("fadescreen").GetComponent<Image>();
+        }
+        if(fin){
+            FadeIn();
+        }
     }
 
     // Update is called once per frame
@@ -19,7 +26,7 @@ public class Fade : MonoBehaviour
         
     }
 
-    void FadeIn(){
+    public void FadeIn(){
         StartCoroutine(FadeImage(true));
     }
     public void FadeOut(){

@@ -12,10 +12,14 @@ public class TriggerZoneMove : MonoBehaviour
 
     public GameObject gs;
     public GravitySwitch g;
+    public GameObject soa;
 
     public bool resetgs;
     public bool moveobj;
     public int temp;
+    public bool fade;
+    public Fade f;
+    public bool setObjActive;
 
     private Vector3 vel = Vector3.zero;
     // Start is called before the first frame update
@@ -30,6 +34,12 @@ public class TriggerZoneMove : MonoBehaviour
     {
         if (playerHasTriggeredZone)
         {
+            if(setObjActive){
+                soa.SetActive(true);
+            }
+            if (fade){
+                f.FadeOut();
+            }
             if (moveobj)
             {   
                 if (useTargetFromComponent)
