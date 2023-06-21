@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c801b817bc1a2a34c8bad43e5a8ecc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1786252725070823849}
   jSoundSource: {fileID: 5303411251150502980}
   rb: {fileID: 1786252725070823850}
   jumpForce: 0.62
@@ -182,6 +183,8 @@ MonoBehaviour:
   g: {fileID: 0}
   cl: {fileID: 1786252725070823855}
   f: 0
+  trail: {fileID: 0}
+  jParticle: {fileID: 3534195338168694861, guid: 7b914447da3e9cf4f9600f53dff6ddd3, type: 3}
   j: 0
   pfm: 1175
   rTime: 0.75

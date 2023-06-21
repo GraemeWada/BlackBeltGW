@@ -8,7 +8,10 @@ public class Fade : MonoBehaviour
     public Image img;
 
     public bool endScreen = false;
+    public bool usingSprite = false;
     public bool fin = true;
+
+    public SpriteRenderer s;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +19,13 @@ public class Fade : MonoBehaviour
             img = GameObject.Find("fadescreen").GetComponent<Image>();
         }
         if(fin){
-            FadeIn();
+            if(usingSprite){
+                StartCoroutine(FadeSprite());
+            }
+            else
+            {
+                FadeIn();
+            }
         }
     }
 
@@ -57,5 +66,15 @@ public class Fade : MonoBehaviour
                 yield return null;
             }
         }
+    }
+    IEnumerator FadeSprite()
+    {
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                s.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
     }
 }

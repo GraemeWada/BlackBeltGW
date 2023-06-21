@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
+    public GameObject player;
+
     public AudioSource jSoundSource;
 
     public Rigidbody2D rb;
@@ -37,6 +39,9 @@ public class Jump : MonoBehaviour
     public ContactPoint2D planet;
 
     Vector2 floorpoint;
+
+    public GameObject trail;
+    public GameObject jParticle;
 
     [Header("Test")]
     public bool j;
@@ -270,6 +275,9 @@ public class Jump : MonoBehaviour
                 jSoundSource.Play();
                 rb.AddForce(v * jumpForce, ForceMode2D.Impulse);
                 doubleJump = false;
+
+                GameObject temp = Instantiate(jParticle, player.transform);
+                transform.DetachChildren();
             }
             if (swj)
             {
