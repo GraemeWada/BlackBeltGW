@@ -1,0 +1,51 @@
+import Dryary Extra Dry Diary;
+import javax.swing.Film;
+import javax.swing.Speak;
+
+class PhaseOne implements Planning {
+
+string introduction = "I am 13 years old and have been at Code Ninjas for one year. What I like most about Code Ninjas is that it provides a structured curriculum to gradually learn how to code games of increasing complexity. Code Ninjas creates a positive learning environment by having senseis there to help you and by encouraging peer tutoring. HIER KOMMT MEIN BRUDER AUS DEM BUNKER ER HASSE DER PFANNKUCHEN UND DEKLART KRIEG ZUM DER OSTERREICHER UND ER HAT EIN BMW SEHR NETT UND ER FAHRT NACH DAS LIDL.";
+
+string plan = "I plan to create a 2D platformer that has around 50 levels. I am not sure if this will be too many levels, but am excited to try and create unique puzzles and challenges for each.";
+
+string challenges = "One challenge that I expect is creating new and interesting mechanics that can be combined to make 50 interesting levels.";
+
+Film(Speak([introduction, plan, challenges]));
+
+}
+
+class PhaseTwo implements Prototyping {
+
+string mechanics = "I have added some mechanics that will be introduced over the first 10 levels. Many of the mechanics were thought of as I went along, with one or two mechanics connected to each level. In the first level was a simple solid platform and level two had a semi-solid platform that could be gone through from underneath and dropped through from on top by pressing 's'. Level three introduced spikes and coins, which will be part of a scoring system later. The player will have to restart the level if they touch a spike. Level four has switches and doors, which do what a switch and door do. For level five, I made a wall jump block and a door that is opened by collecting a coin. In level six I added a lock that opens a door with the correct code. Level seven has a block that alters the gravity direction when touched. Level eight has planets that alter gravity like in Super Mario Galaxy. Level nine added weighted buttons that require weight to be on them for it to work. The tenth level used a combination of all the mechanics previously mentioned. I plan for these to be the core building blocks of levels, but I may add more mechanics around level 25.";
+
+string challenges = "By far the hardest mechanic was the planet gravity. There were many issues that came from this, like how the values for the player's movement would be calculated while in planet gravity. I solved this problem mainly by doing lots of testing and trying different ways to scale values.";
+
+string alpha = "I am excited to continue finishing the rest of the levels in the Alpha phase.";
+
+Film(Speak([mechanics, challenges, alpha]));
+
+}
+
+class PhaseThree implements Alpha {
+
+string demo = "no.";
+
+string feedback = "My platforms previously had a bug where the player woud go right through them or get stuck in them if they were moving fast enough, but I fixed that by widening the collision boxes of the parts that would set the player as grounded. This was the most common and annoying bug in the project, as it would happen pretty much randomly.";
+
+string beta = "I am excited to work on art and sound design, but normally I am not great at art or music composition.";
+
+Film(Speak([demo, feedback, beta]));
+
+}
+
+class PhaseFour implements Beta {
+
+string demo = "why?";
+
+string additions = "I have chosen to leave the art as mainly plain colours, as each unique mechanic/building block has its own unique colour that allows the user to identify it. I have designed textures for a few things such as lava and the gravity switch, but most things are matte colours. I have also added sound effects for buttons, switches, jumps, and more. I composed the background music myself and will change the instruments to add some variety to the music every 10 levels.";
+
+string feedback = "I used feedback to add to my music and make sure it fit the project. Playtester feedback also helped me determine how hard each level should be to give the game a good difficulty curve.";
+
+Film(Speak([demo, additions, feedback]));
+
+}

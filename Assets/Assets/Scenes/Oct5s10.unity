@@ -2274,7 +2274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 610488866}
   endScreen: 1
+  usingSprite: 0
   fin: 0
+  s: {fileID: 0}
 --- !u!1001 &58209442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72717,6 +72719,14 @@ PrefabInstance:
       propertyPath: dist
       value: 0.265
       objectReference: {fileID: 0}
+    - target: {fileID: 5303411251150502980, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fcfca2a13b20a4fcfa83339de2a197a8, type: 3}
+    - target: {fileID: 7973000271448516952, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e2e44797e34e10f458c8c56dd19c8e54, type: 3}
     - target: {fileID: 8189806388191135627, guid: 009a08f671a52b741bf1e30659c074fb, type: 3}
       propertyPath: coinText
       value: 
