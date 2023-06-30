@@ -9,11 +9,16 @@ public class Swidge : MonoBehaviour
     public bool a = false;
     public bool useTargetFromComponent = true;
 
+    public AudioSource clickSounds;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("SwidgeOn");
+            if(!a){
+                clickSounds.Play();
+            }
             a = true;
         }
     }

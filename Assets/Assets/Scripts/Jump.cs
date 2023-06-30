@@ -277,7 +277,8 @@ public class Jump : MonoBehaviour
                 doubleJump = false;
 
                 GameObject temp = Instantiate(jParticle, player.transform);
-                transform.DetachChildren();
+                temp.transform.SetParent(null, true);
+                //transform.DetachChildren();
             }
             if (swj)
             {
