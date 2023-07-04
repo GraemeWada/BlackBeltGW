@@ -17,6 +17,7 @@ public class Hazard : MonoBehaviour
     public string currentScene;
 
     public GameObject player;
+    public GameObject ratSprite;
 
     [Header("Test")]
     public bool ClearCoins;
@@ -46,6 +47,7 @@ public class Hazard : MonoBehaviour
             //pos = transform.position;
             temp = Instantiate(explo, player.transform);
             transform.DetachChildren();
+            ratSprite.SetActive(false);
             player.SetActive(false);
             temp.SetActive(true);
             Invoke("Reload", 1.5f);
