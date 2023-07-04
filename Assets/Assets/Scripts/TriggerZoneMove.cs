@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerZoneMove : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class TriggerZoneMove : MonoBehaviour
             }
             if (fade){
                 f.FadeOut();
+                Invoke("Credits", 8f);
             }
             if (moveobj)
             {   
@@ -83,6 +85,10 @@ public class TriggerZoneMove : MonoBehaviour
     void DAT()
     {
         Destroy(this.gameObject);
+    }
+
+    void Credits(){
+        SceneManager.LoadScene("CREDITSLMAO");
     }
 
 }
