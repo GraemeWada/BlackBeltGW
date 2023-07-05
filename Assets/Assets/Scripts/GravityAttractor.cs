@@ -71,8 +71,10 @@ public class GravityAttractor : MonoBehaviour
         return point;
     }
 
+    //[ContextMenu("Orient")]
     public void OrientBody(Rigidbody2D rb, Vector3 normal)
     {
+        print("aligned");
         rb.transform.localRotation = Quaternion.FromToRotation(rb.transform.up, normal) * rb.transform.rotation;
     }
 
@@ -80,7 +82,7 @@ public class GravityAttractor : MonoBehaviour
     {
         //Debug.Log("attract");
         pullVec = FindSurface(rb);
-        OrientBody(rb, pullVec);
+        
 
         pullForce = 0.0f;
         if (FindNearestPointOnSurface(rb) != new Vector2(0, 0))
@@ -117,7 +119,7 @@ public class GravityAttractor : MonoBehaviour
         //Debug.Log(pullVec);
 
         pullVec = new Vector2(rb.transform.position.x, rb.transform.position.y) - attCenter;
-
+        OrientBody(rb, pullVec);
         rb.AddForce(pullVec.normalized * pullForce * Time.deltaTime);
     }
 

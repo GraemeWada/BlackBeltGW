@@ -46,8 +46,11 @@ public class Controls : MonoBehaviour
             rb.AddForce(RightV * speed * Time.deltaTime, ForceMode2D.Impulse);
             //Right
         }
+    if(gB.useGravity){
+        RecalculateControls(g);
+    }
 
-        if (g != null)
+        /*if (g != null)
         {
             if (g.GCCounter != temp)
             {
@@ -58,7 +61,7 @@ public class Controls : MonoBehaviour
                 LeftV.y = Mathf.Sin(Mathf.Deg2Rad * (dir + 180));
                 temp = g.GCCounter;
             }
-        }
+        }*/
         //Debug.Log(v);
     }
 
@@ -94,9 +97,12 @@ public class Controls : MonoBehaviour
     {
         if (g != null)
         {
+            print("rec");
             if (g.GCCounter != temp)
             {
                 int dir = g.dir[g.GCCounter];
+                print(dir);
+                RotateToAngle(dir, this.GetComponentInParent<Transform>());
                 RightV.x = Mathf.Cos(Mathf.Deg2Rad * dir);
                 RightV.y = Mathf.Sin(Mathf.Deg2Rad * dir);
                 LeftV.x = Mathf.Cos(Mathf.Deg2Rad * (dir + 180));
@@ -106,10 +112,16 @@ public class Controls : MonoBehaviour
         }
         else
         {
+            RotateToAngle(0, this.GetComponentInParent<Transform>());
             RightV.x = Mathf.Cos(0);
             RightV.y = Mathf.Sin(0);
             LeftV.x = Mathf.Cos(Mathf.PI);
             LeftV.y = Mathf.Sin(Mathf.PI);
         }
+    }
+
+    void RotateToAngle(int angle, Transform t){
+        t.rotation = new Quaternion(0f,0f,0f,0f);
+        t.rotation = Quaternion.Euler(0f, 0f, (float)angle);
     }
 }
