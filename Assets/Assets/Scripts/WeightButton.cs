@@ -19,9 +19,9 @@ public class WeightButton : MonoBehaviour
 
     public RaycastHit2D[] hit;
 
-    private List<Collider2D> tList = new List<Collider2D>();
-    private List<int> weights = new List<int>();
-    private List<int> ids = new List<int>();
+    public List<Collider2D> tList = new List<Collider2D>();
+    public List<int> weights = new List<int>();
+    public List<int> ids = new List<int>();
 
     //Stays 0
     public int weight;
@@ -75,7 +75,7 @@ public class WeightButton : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        //Debug.Log(c.gameObject.name);
+        Debug.Log(c.gameObject.name);
         
         if (c.gameObject.tag == "WeightedObject")
         {
@@ -102,6 +102,7 @@ public class WeightButton : MonoBehaviour
             if (tList.Contains(c) && ids.Contains(id))
             {
                 weight -= c.gameObject.GetComponent<WeightVal>().weight;
+                print(weight);
                 tList.Remove(c);
                 ids.Remove(id);
             }
