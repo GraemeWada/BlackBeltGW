@@ -26,7 +26,7 @@ public class Note: MonoBehaviour {
       reading = true;
       PM.SetActive(false);
     }
-    if (reading && Input.GetKeyDown(KeyCode.Escape)) {
+    if (reading && Input.GetKeyDown(KeyCode.Tab)) {
       Time.timeScale = 1;
       reading = false;
       noteText.SetActive(false);

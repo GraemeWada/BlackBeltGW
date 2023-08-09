@@ -8,16 +8,16 @@ public class PauseButton : MonoBehaviour
     public GameObject pauseMenu;
     public string currentScene;
     public bool a = false;
-    void Update()
+    void LateUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !a)
+        if(Input.GetKeyDown(KeyCode.Return) && !a)
         {
             // Debug.Log("f");
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
             a = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && a)
+        else if (Input.GetKeyDown(KeyCode.Tab) && a)
         {
             // Debug.Log("f");
             Time.timeScale = 1;

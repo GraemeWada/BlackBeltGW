@@ -64,7 +64,7 @@ public class Lock : MonoBehaviour
         if (tres == drei) { trois = true; } else { trois = false; }
         if (cuatro == vier) { catre = true; } else { catre = false; }
         if (un && deux && trois && catre) {a = true;}
-        if (Input.GetKeyDown(KeyCode.Escape) && !pmopen)
+        if (Input.GetKeyDown(KeyCode.Tab) && !pmopen)
         {
             Time.timeScale = 1;
             LockUI.SetActive(false);

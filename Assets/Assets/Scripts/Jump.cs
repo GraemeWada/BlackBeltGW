@@ -203,6 +203,12 @@ public class Jump : MonoBehaviour
         {
             rb.gravityScale = 1;
         }
+
+        //NEW FRICTION CODE
+        if(gb.useGravity && isGrounded && !Input.anyKey){
+            rb.velocity *= 0.96f;
+            print("Friction");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -176,6 +176,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Assets/Scenes/CREDITSLMAO.unity
     guid: ff6e59664afa7674e9bfd26f329639ec
+  - enabled: 1
+    path: Assets/Assets/Scenes/CONTROLS.unity
+    guid: 32a2fb8f2a632ff43bb968a42f5e929d
   - enabled: 0
     path: Assets/Assets/Scenes/zTestRoom.unity
     guid: 86a969deac0751f4d82c52690e0bf002
